@@ -1,0 +1,100 @@
+---
+import { getImage } from 'astro:assets';
+import underline from '../../assets/hero/truus-team-underline.svg?raw';
+import { previewPlayerShowcase } from '../../data/player-showcase';
+import { publishedPlayers } from '../../data/players';
+import { previewMode } from '../../data/site';
+import '../../styles/gallery.css';
+
+const number = new Intl.NumberFormat('ar-JO');
+const previewOrder = ['6', '4', '1', '2', '3', '5', '7'];
+const photos = previewMode
+  ? previewOrder.flatMap(assetId => {
+      const photo = previewPlayerShowcase.find(photo => photo.assetId === assetId);
+      return photo ? [{ ...photo, fullSize: `/images/players/player-${assetId}-1080.webp` }] : [];
+    })
+  : await Promise.all(publishedPlayers.map(async player => {
+      const { src: source } = player.photo;
+      const widths = [...new Set([480, 800, 1080].map(width => Math.min(width, source.width)))];
+      const candidates = await Promise.all(widths.map(width => getImage({ src: source, width, format: 'webp' })));
+      const fullSize = candidates.find(image => image.attributes.width === source.width)
+        ?? await getImage({ src: source, width: source.width, format: 'webp' });
+      return {
+        width: source.width,
+        height: source.height,
+        src: candidates[0]!.src,
+        srcSet: candidates.map(image => `${image.src} ${image.attributes.width}w`).join(', '),
+        fullSize: fullSize.src,
+      };
+    }));
+
+const titleMark = underline.replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
+---
+
+<div class="gallery-page">
+  <section class="g-banner" aria-labelledby="g-title">
+    <svg width="0" height="0" aria-hidden="true" focusable="false">
+      <defs><clipPath id="gallery-title-edge" clipPathUnits="objectBoundingBox"><path d="M0 0H1V.78Q.945 1 .8 1H.2Q.055 1 0 .78Z" /></clipPath></defs>
+    </svg>
+    <h1 id="g-title">الصور والأنشطة</h1>
+  </section>
+
+  <section id="players" class="g-exhibit" aria-labelledby="g-exhibit-title">
+    <div class="g-shell">
+      <header class="g-heading">
+        <p class="g-kicker">معرض الأكاديمية</p>
+        <h2 id="g-exhibit-title">صور لاعبي <span class="g-mark">زيغان.<Fragment set:html={titleMark} /></span></h2>
+        {photos.length > 0 ? <p>اختر صورة لعرضها بالحجم الكامل.</p> : <p>صور اللاعبين غير مرفقة في نسخة السورس العامة.</p>}
+      </header>
+      {photos.length > 0 && (
+        <ol class="g-photos" aria-label="صور لاعبي زيغان">
+          {photos.map((photo, index) => {
+            const caption = `الصورة ${number.format(index + 1)} من معرض لاعبي زيغان`;
+            const sizes = index === 0
+              ? '(max-width: 412px) calc(100vw - 32px), (max-width: 767px) 380px, 374px'
+              : `(max-width: 767px) 48vw, ${index < 3 ? 374 : 280}px`;
+            return (
+              <li>
+                <a class="g-shot" href={photo.fullSize} aria-label={`عرض ${caption}`}>
+                  <img src={photo.src} srcset={photo.srcSet} sizes={sizes} width={photo.width} height={photo.height} alt={caption} decoding="async" loading="lazy" />
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+    </div>
+  </section>
+
+  <section class="g-shell g-training" aria-labelledby="g-training-title">
+    <div>
+      <p class="g-kicker">التدريب في زيغان</p>
+      <h2 id="g-training-title">تعرّف على برامج الأكاديمية.</h2>
+      <p>استكشف الفئات العمرية، وبرامج حراسة المرمى واللياقة البدنية.</p>
+    </div>
+    <a href="/programs/">استكشف البرامج <span aria-hidden="true">↖</span></a>
+  </section>
+
+  {photos.length > 0 && (
+    <dialog class="g-viewer" aria-labelledby="g-viewer-title">
+      <div class="g-viewer-top">
+        <h2 id="g-viewer-title">معرض زيغان</h2>
+        <button type="button" class="g-close" aria-label="إغلاق الصورة" autofocus>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div class="g-viewer-photo"><img class="g-large" alt="" /></div>
+      <div class="g-viewer-nav">
+        <button type="button" data-gallery-step="-1" aria-label="الصورة السابقة">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+        </button>
+        <p class="g-count" aria-live="polite"></p>
+        <button type="button" data-gallery-step="1" aria-label="الصورة التالية">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6" /></svg>
+        </button>
+      </div>
+    </dialog>
+  )}
+  <script src="../../scripts/gallery.ts"></script>
+</div>

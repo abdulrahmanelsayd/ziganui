@@ -1,0 +1,23 @@
+:root {
+  --color-page: #FAF6EE;
+  --color-surface: color-mix(in srgb, var(--color-page) 94%, var(--color-text));
+  --color-text: #000000;
+  --color-muted: color-mix(in srgb, var(--color-text) 65%, var(--color-page));
+  --color-border: color-mix(in srgb, var(--color-text) 18%, var(--color-page));
+  --color-action: #C6A356;
+  --color-action-hover: color-mix(in srgb, var(--color-action) 95%, var(--color-text));
+  --color-action-strong: color-mix(in srgb, var(--color-action) 75%, var(--color-text));
+  --color-on-action: #000000;
+  --font-sans: "Swissra", Arial, sans-serif;
+  --page-max: 1200px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --gutter: 48px;
+  --section-space: 96px;
+  --content-gap: 40px;
+}
+@media (max-width: 1199px) {
+  :root { --gutter: 32px; --section-space: 72px; }
+}
+@media (max-width: 767px) {
+  :root { --gutter: 20px; --section-space: 64px; --content-gap: 28px; }
+}

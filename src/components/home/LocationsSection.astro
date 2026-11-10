@@ -1,0 +1,30 @@
+---
+import Container from '../ui/Container.astro';
+import ActionLink from '../ui/ActionLink.astro';
+import PhotoSlot from '../ui/PhotoSlot.astro';
+import BidiText from '../ui/BidiText.astro';
+import { site, previewMode, trainingEnquiryUrl } from '../../data/site';
+import { home } from '../../data/home';
+import { photos } from '../../data/photos';
+interface Props { id?: string; }
+const { id = 'locations' } = Astro.props;
+---
+<section class="section surface" id={id} aria-labelledby={`${id}-title`} data-reveal>
+  <Container>
+    <div class="section-heading"><h2 id={`${id}-title`}>{home.locations.title}</h2><p>{home.locations.description}</p></div>
+    <div class="locations-grid">{site.locations.map((location) => <article>
+      {(photos.locations[location.id] || previewMode) && <PhotoSlot label={`صورة ${location.title}`} ratio="16:9" photo={photos.locations[location.id] ?? null} rounded={false} />}
+      <h3>{location.title}</h3><p class="address muted"><bdi dir="ltr">{location.address.split('،')[0]}</bdi>{location.address.slice(location.address.indexOf('،'))}</p>
+      <ActionLink href={location.mapUrl} external>افتح الموقع على الخريطة</ActionLink>
+      {location.receptionLabel ? <p class="small muted reception">الاستقبال: <BidiText text={location.receptionLabel} /> <span>بتوقيت الأردن</span></p> : <div class="training-enquiry"><ActionLink href={trainingEnquiryUrl} external>{home.locations.trainingEnquiryCta}</ActionLink></div>}
+    </article>)}</div>
+  </Container>
+</section>
+<style>
+  .locations-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  h3 { margin-top: 24px; }
+  .address { margin-block: 12px 8px; }
+  .reception, .training-enquiry { margin-top: 12px; }
+  .reception span { display: block; }
+  @media (max-width: 767px) { .locations-grid { grid-template-columns: 1fr; gap: 40px; } }
+</style>

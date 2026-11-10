@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/brand/zigan-logo.png';
+import { headerNavigation } from '../../data/header-navigation';
+import { trialUrl } from '../../data/site';
+interface Props { currentPath: string; }
+const { currentPath } = Astro.props;
+---
+<header class="site-header notch-header" data-header data-notch-header data-state="closed">
+  <div class="notch-shell">
+    <nav class="notch-toolbar" data-header-toolbar aria-label="التنقل الرئيسي">
+      <a class="brand notch-brand" href="/" aria-label="أكاديمية زيغان لكرة القدم، الرئيسية"><Image src={logo} width={144} height={144} widths={[144, 216, 288]} sizes="(max-width: 833px) 30px, 32px" format="webp" quality={95} alt="" decoding="async" loading="eager" /></a>
+      <div class="desktop-nav notch-desktop-links">{headerNavigation.map(link => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}</div>
+      <div class="notch-actions">
+        <button class="notch-search-toggle" data-search-open type="button" aria-label="البحث" aria-expanded="false" aria-controls="header-search" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+        <a class="notch-trial notch-desktop-trial" href={trialUrl} target="_blank" rel="noopener noreferrer" data-trial>احجز تمرينتك المجانية</a>
+        <button class="notch-menu-toggle" data-menu-open data-menu-close type="button" aria-label="القائمة" aria-expanded="false" aria-controls="mobile-menu" hidden><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14"/><path d="M3 10h14"/><path d="M3 15h14"/></svg></button>
+      </div>
+    </nav>
+    <div class="notch-panel" id="mobile-menu" data-menu-panel hidden inert><div class="notch-panel-clip"><nav class="menu-nav notch-mobile-links" aria-label="التنقل على الموبايل">{headerNavigation.map(link => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}</nav><div class="notch-mobile-actions"><button type="button" class="notch-mobile-search" data-search-open aria-expanded="false" aria-controls="header-search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>ابحث في زيغان</button><a class="notch-trial" href={trialUrl} target="_blank" rel="noopener noreferrer" data-trial>احجز تمرينتك المجانية</a></div></div></div>
+    <section class="notch-panel" id="header-search" data-search-panel aria-label="البحث في زيغان" hidden inert><div class="notch-panel-clip"><div class="notch-search-content"><div class="notch-search-heading"><p>البحث في زيغان</p><button type="button" class="notch-search-close" data-search-close aria-label="إغلاق البحث"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 4 12 12M4 16 16 4"/></svg></button></div><div class="notch-search-field"><input data-search-input type="search" aria-label="ابحث في زيغان" placeholder="ابحث في زيغان" autocomplete="off" spellcheck="false" enterkeyhint="go"><button type="button" data-search-clear aria-label="مسح البحث" hidden>مسح</button></div><ul class="notch-search-results" data-search-results hidden>{headerNavigation.map(link => <li hidden data-search-result><a href={link.href}>{link.label}</a></li>)}</ul><p class="notch-search-empty" data-search-empty hidden>لا توجد نتائج مطابقة.</p><p class="notch-search-status" data-search-status role="status" aria-live="polite" aria-atomic="true"></p></div></div></section>
+  </div>
+</header>
+<noscript><nav class="notch-no-script" aria-label="روابط الموقع">{headerNavigation.map(link => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}<a href={trialUrl} target="_blank" rel="noopener noreferrer" data-trial>احجز تمرينتك المجانية</a></nav></noscript>
+
+<style>
+/* Independent Arabic adaptation of the measured Supaste notch navigation. */
+.notch-header{position:fixed;inset:0 0 auto;z-index:80;display:flex;justify-content:center;pointer-events:none;direction:rtl;font-family:Swissra,Arial,sans-serif;color:#fff;isolation:isolate}
+.notch-header *{box-sizing:border-box}
+.notch-shell{position:relative;pointer-events:auto;width:max-content;max-width:calc(100% - 40px);background:#000;border-radius:0 0 18px 18px}
+.notch-shell:before,.notch-shell:after{content:"";position:absolute;top:0;width:20px;height:20px;pointer-events:none}
+.notch-shell:before{left:-20px;background:radial-gradient(circle at 0 100%,transparent 19.8px,#000 20px)}
+.notch-shell:after{right:-20px;background:radial-gradient(circle at 100% 100%,transparent 19.8px,#000 20px)}
+.notch-header[data-header-entering] .notch-shell{animation:notch-enter .6s cubic-bezier(.22,1,.36,1) both}
+@keyframes notch-enter{from{transform:translateY(-105%)}to{transform:translateY(0)}}
+.notch-toolbar{display:flex;align-items:center;gap:32px;height:54px;padding:10px;position:relative;z-index:2}
+.notch-brand{display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none;color:#fff;text-decoration:none!important}
+.notch-brand img{display:block;object-fit:contain;width:32px;height:32px;filter:none;opacity:1}
+.notch-desktop-links{display:flex;align-items:center;gap:20px;white-space:nowrap}
+.notch-desktop-links>a{display:flex;align-items:center;min-height:34px;color:#aaa;font-size:13px;font-weight:500;line-height:1.5;text-decoration:none;transition:color .18s ease}
+.notch-desktop-links>a:hover,.notch-desktop-links>a:is([aria-current="page"],[aria-current="location"]){color:#fff}
+.notch-actions{display:flex;align-items:center;gap:10px}
+.notch-trial{display:flex;justify-content:center;align-items:center;min-height:34px;padding:6px 13px;white-space:nowrap;background:#fff;color:#000!important;border-radius:8px;font-size:12px;font-weight:500;line-height:1.6;text-decoration:none!important;transition:background-color .18s ease}
+.notch-trial:hover{background:#e5e5e5}
+.notch-header button{font-family:inherit;border:0;cursor:pointer;color:inherit}
+.notch-header button[hidden],.notch-header [hidden]{display:none!important}
+.notch-search-toggle{display:grid;place-items:center;width:34px;height:34px;padding:0;background:none;color:#aaa!important}
+.notch-search-toggle:hover{color:#fff!important}
+.notch-menu-toggle{display:none}
+.notch-header :is(a,button,input):focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:4px}
+.notch-header .notch-trial:focus-visible{outline-offset:4px}
+.notch-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s cubic-bezier(.22,1,.36,1);min-width:0}
+.notch-panel-clip{min-height:0;overflow:hidden;max-height:calc(100dvh - 66px);overscroll-behavior:contain}
+.notch-header[data-state="menu"] [data-menu-panel],.notch-header[data-state="search"] [data-search-panel]{grid-template-rows:1fr}
+.notch-header[data-state="menu"] [data-menu-panel]>.notch-panel-clip,.notch-header[data-state="search"] [data-search-panel]>.notch-panel-clip{overflow-y:auto;scrollbar-width:thin;scrollbar-color:#555 #000}
+.notch-mobile-links{display:grid;gap:8px;padding:20px 28px}
+.notch-mobile-links>a{display:flex;align-items:center;min-height:48px;color:#999;font-size:24px;font-weight:400;line-height:1.65;text-decoration:none;opacity:0;transform:translateY(-6px);transition:color .18s,opacity .22s,transform .28s}
+.notch-header[data-state="menu"] .notch-mobile-links>a{opacity:1;transform:none;transition-delay:0s,.08s,.08s}
+.notch-mobile-links>a:hover,.notch-mobile-links>a:is([aria-current="page"],[aria-current="location"]){color:#fff}
+.notch-mobile-actions{display:grid;gap:12px;padding:0 10px 10px}
+.notch-mobile-search{display:flex;gap:10px;align-items:center;min-height:44px;padding:0 18px;background:transparent;color:#aaa!important;text-align:right;font-size:14px;font-weight:400}
+.notch-mobile-search:hover{color:#fff!important}
+.notch-mobile-actions>.notch-trial{width:100%;min-height:36px}
+.notch-search-content{padding:20px 28px 28px;min-height:170px}
+.notch-search-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:16px}
+.notch-search-heading>p{font-size:13px;font-weight:500;margin:0;color:#aaa}
+.notch-search-close{display:grid;place-items:center;width:32px;height:32px;background:transparent;padding:0;color:#aaa!important}
+.notch-search-field{display:flex;align-items:center;gap:12px;border-bottom:1px solid #555;padding-bottom:10px}
+.notch-search-field>input{appearance:none;min-width:0;width:100%;padding:0;border:0;border-radius:0;background:transparent;color:#fff;font-family:inherit;font-size:24px;font-weight:500;line-height:1.8}
+.notch-search-field>input::placeholder{color:#777;opacity:1}
+.notch-search-field>input::-webkit-search-cancel-button{appearance:none}
+.notch-search-field>button{flex:none;min-width:38px;min-height:36px;background:transparent;font-size:12px;color:#aaa}
+.notch-search-results{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:4px}
+.notch-search-results a{display:flex;align-items:center;min-height:40px;font-size:16px;color:#ddd;text-decoration:none}
+.notch-search-results a:hover{color:#fff}
+.notch-search-empty{font-size:14px;color:#aaa;margin:20px 0 0}
+.notch-search-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.notch-no-script{padding:66px 20px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 20px;background:#000;color:#fff;font-size:14px}
+/* A notch overlays the photograph; it does not reserve a full-width cream row. */
+.skip-link:focus{z-index:100}
+@media(width < 834px){
+ .notch-shell{width:calc(100% - 40px);max-width:760px}
+ .notch-toolbar{height:52px;justify-content:space-between;gap:10px}
+ .notch-brand img{width:30px;height:30px}
+ .notch-desktop-links,.notch-desktop-trial,.notch-search-toggle{display:none}
+ .notch-menu-toggle{display:grid;place-items:center;width:34px;height:32px;padding:0;background:transparent;color:#999!important}
+ .notch-menu-toggle svg path{transform-origin:center;transition:transform .28s cubic-bezier(.22,1,.36,1),opacity .15s}
+ .notch-header[data-state="menu"] .notch-menu-toggle svg path:first-child,.notch-header[data-state="search"] .notch-menu-toggle svg path:first-child{transform:translateY(5px) rotate(45deg)}
+ .notch-header[data-state="menu"] .notch-menu-toggle svg path:nth-child(2),.notch-header[data-state="search"] .notch-menu-toggle svg path:nth-child(2){opacity:0}
+ .notch-header[data-state="menu"] .notch-menu-toggle svg path:last-child,.notch-header[data-state="search"] .notch-menu-toggle svg path:last-child{transform:translateY(-5px) rotate(-45deg)}
+}
+@media(prefers-reduced-motion:reduce){.notch-header[data-header-ready] .notch-shell{animation:none}.notch-header *{transition:none!important}}
+@media(width < 360px){.notch-mobile-links{padding-inline:22px}.notch-mobile-links>a{font-size:22px}}
+
+</style>

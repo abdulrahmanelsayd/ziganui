@@ -1,0 +1,87 @@
+---
+import { home } from '../../data/home';
+interface Props { id?: string; compactMobile?: boolean; }
+const { id = 'academy', compactMobile = false } = Astro.props;
+---
+<section id={id} class:list={['academy-intro', { 'academy-intro--compact-mobile': compactMobile }]} aria-labelledby={`${id}-title`} data-reveal>
+  <div class="intro-grid">
+    <div class="intro-statement">
+      <h2 id={`${id}-title`}>{home.intro.title}</h2>
+    </div>
+    <div class="intro-supporting">
+      <p>{home.intro.description}</p>
+      <a class="intro-circle" href="/about/">{home.intro.link}</a>
+    </div>
+  </div>
+</section>
+<style>
+  .academy-intro {
+    padding-block: 96px 72px;
+    background: var(--color-page);
+    color: var(--color-text);
+    direction: rtl;
+    text-align: start;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-synthesis: none;
+  }
+  .intro-grid {
+    width: calc(100% - 40px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+    direction: rtl;
+  }
+  .intro-statement, .intro-supporting, h2, p, .intro-circle { min-width: 0; }
+  h2 { font-size: 24px; line-height: 38px; font-weight: 400; margin: 0; }
+  p { width: 64%; max-width: 64%; font-size: 16px; line-height: 27px; font-weight: 400; margin: 0; padding: 0; }
+  .intro-circle {
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    background: var(--color-text);
+    color: var(--color-page);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 12px;
+    border: 0;
+    box-shadow: none;
+    transform: none;
+    flex-shrink: 0;
+    margin-block-start: 0;
+    margin-inline-start: auto;
+    margin-inline-end: 0;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    transition: background-color 150ms;
+  }
+  .intro-circle:hover { background: var(--color-action); color: var(--color-on-action); }
+  @media (width < 768px) {
+    .academy-intro--compact-mobile { padding-block-start: 48px; }
+  }
+  @media (min-width: 768px) {
+    .academy-intro { padding-block: 112px 96px; }
+    .intro-grid { width: 76%; grid-template-columns: minmax(0, 7fr) minmax(0, 3fr); gap: 0; }
+    .intro-statement { padding-inline-end: 32px; }
+    .intro-supporting { padding-inline-start: 32px; }
+    h2 { font-size: 26px; line-height: 40px; }
+    p { width: 100%; max-width: 100%; }
+    .intro-circle { width: 128px; height: 128px; margin-block-start: 64px; margin-inline: 0; }
+  }
+  @media (min-width: 1024px) {
+    .academy-intro { padding-block: 144px 112px; }
+    .intro-grid { width: min(1040px, 68%); }
+    .intro-statement { padding-inline-end: 40px; }
+    .intro-supporting { padding-inline-start: 40px; }
+    h2 { font-size: 32px; line-height: 48px; }
+    .intro-circle { width: 154px; height: 154px; margin-block-start: 80px; font-size: 16px; line-height: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .intro-circle { transition: none; }
+  }
+</style>

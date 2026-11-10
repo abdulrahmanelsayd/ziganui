@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import academyLogo from '../../assets/brand/zigan-logo.png';
+---
+<section id="academy" class="academy-lando" data-academy-about aria-labelledby="academy-statement">
+  <div class="academy-field" aria-hidden="true"><div class="academy-field-window"><canvas></canvas><svg class="field-fallback" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ff6b00" stroke-opacity=".2" stroke-width="1"><path d="M-80 15C160 170 155 530 335 565S445 225 715 220 930 600 1170 455 1340 95 1510 170"/><path d="M-70 80C120 200 160 635 355 630S500 310 705 295 970 690 1200 535 1370 180 1510 235"/><path d="M-70 150C90 240 150 710 375 700S530 405 715 375 970 765 1230 615 1410 275 1510 310"/><path d="M-90 230C50 300 135 790 380 775S555 500 730 455 985 840 1260 690 1460 380 1510 390"/><path d="M-110 320C50 425 110 880 375 860S570 580 745 540 1020 910 1300 780 1480 480 1530 490"/></g></svg></div></div>
+  <div class="academy-message" aria-hidden="true">
+    <div class="academy-marker"><span>زيغان</span><small>كرة القدم. بعقلية مختلفة.</small></div>
+    <div class="academy-marquees">
+      <div class="academy-marquee academy-marquee--orange"><div class="academy-marquee-track"><span>شغف بالكرة. التزام بالتطوّر.</span></div></div>
+      <div class="academy-marquee academy-marquee--ink"><div class="academy-marquee-track"><span>من أول تمريرة. لثقة أكبر.</span></div></div>
+    </div>
+  </div>
+  <div class="academy-manifesto">
+    <div class="academy-eyebrow"><Image src={academyLogo} widths={[144, 216, 288]} sizes="(max-width: 767px) 56px, 72px" width={72} height={72} format="webp" quality={95} alt="" decoding="async" loading="lazy" /><p>عن أكاديمية زيغان</p></div>
+    <h2 id="academy-statement" class="academy-statement"><span class="statement-line">شغفك هو <strong>البداية.</strong> نطوّر <strong>مهارتك،</strong></span>{' '}<span class="statement-line">ونبني فهمك للّعبة. نلعب</span>{' '}<span class="statement-line">بروح <strong>الفريق،</strong> ونتقدّم خطوة بخطوة.</span></h2>
+    <div class="academy-details"><p>في الزرقاء، ندرّب البنات والشباب من ٦ إلى ١٨ سنة.<br/>{' '}مجموعات حسب العمر والمستوى، وتدريب عملي وحصص نظرية.</p><a href="/about/">اتعرّف على الأكاديمية<span aria-hidden="true">↙</span></a></div>
+  </div>
+  <button class="academy-motion" type="button" aria-label="إيقاف الحركة" aria-pressed="false" hidden><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><g class="motion-pause"><path d="M9 6v12M15 6v12"/></g><g class="motion-play"><path d="m9 5 10 7-10 7Z" fill="currentColor" stroke="none"/></g></svg></button>
+<script>
+  import { initAcademyAbout } from '../../scripts/academy-about';
+  initAcademyAbout();
+</script>
+</section>
+<style>
+.academy-lando{--academy-orange:#d84b00;position:relative;isolation:isolate;background:#fff;color:#181818;direction:rtl;font-family:Swissra,Arial,sans-serif;overflow:clip;scroll-margin-top:72px}
+.academy-lando *{box-sizing:border-box}
+.academy-field{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.academy-field-window{position:sticky;top:0;width:100%;height:100svh;overflow:hidden}
+.academy-field canvas,.field-fallback{display:block;position:absolute;inset:0;width:100%;height:100%}
+.academy-field canvas{opacity:0}.academy-lando.field-ready canvas{opacity:1}.academy-lando.field-ready .field-fallback{display:none}
+.academy-message{min-height:clamp(360px,55svh,560px);padding:64px 0 38px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;overflow:visible}
+.academy-marker{text-align:center;display:grid;justify-items:center;gap:12px;color:#181818}
+.academy-marker>span{font-size:40px;line-height:1.25;font-weight:700;letter-spacing:0}
+.academy-marker>small{font-size:11px;font-weight:700;line-height:1.4}
+.academy-marquees{direction:rtl;display:grid;grid-template-columns:minmax(0,1fr);gap:0;transform:translateZ(0);width:100%;margin-inline:auto}
+.academy-marquee{overflow:visible;direction:ltr;min-width:0;width:100%;container-type:inline-size;font-size:clamp(32px,6vw,106px);font-weight:700;line-height:1.4;white-space:nowrap;display:flex;justify-content:flex-start}
+.academy-marquee-track{display:flex;direction:ltr;flex:0 0 auto;gap:clamp(28px,5vw,96px);width:max-content;translate:calc((100cqw - 100%) / 2) 0;will-change:transform}
+.academy-marquee-track>span{display:block;flex:0 0 auto;direction:rtl;unicode-bidi:isolate;padding:.1em .06em .12em}
+.academy-marquee--orange{color:var(--academy-orange)}
+.academy-marquee--ink{color:#181818;font-size:clamp(30px,5.8vw,102px)}
+.academy-manifesto{width:min(80%,1320px);margin:0 auto;padding:72px 0 148px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:56px}
+.academy-eyebrow{display:grid;justify-items:center;gap:12px}
+.academy-eyebrow>img{display:block;width:72px;height:72px;object-fit:contain;opacity:1;filter:none}
+.academy-eyebrow>p{font-size:11px;line-height:1.4;font-weight:700;margin:0}
+.academy-statement{margin:0!important;max-width:none!important;width:100%;font-family:Swissra,Arial,sans-serif!important;font-size:clamp(28px,4.6vw,80px)!important;line-height:1.4!important;font-weight:700!important;letter-spacing:0!important;text-align:center;text-wrap:initial;overflow:visible}
+.statement-line{position:relative;display:block;width:fit-content;max-width:100%;margin:0 auto;white-space:nowrap;padding:.1em .06em .12em}
+.statement-line strong{font:inherit;color:var(--academy-orange)}
+.statement-line.is-revealing{clip-path:inset(0 0 0 100%)}
+.statement-line.is-revealing:after{content:"";position:absolute;inset:0;z-index:2;background:var(--academy-orange);transform-origin:left center;pointer-events:none}
+.statement-line.is-revealing.is-playing{animation:academy-line-reveal .6s cubic-bezier(.215,.61,.355,1) var(--line-delay) both}
+.statement-line.is-revealing.is-playing:after{animation:academy-block-reveal .6s cubic-bezier(.65,0,.35,1) calc(var(--line-delay) + .3s) both}
+@keyframes academy-line-reveal{to{clip-path:inset(0 0 0 0)}}
+@keyframes academy-block-reveal{to{transform:scaleX(0)}}
+.academy-details{display:grid;justify-items:center;gap:30px;max-width:650px}
+.academy-details>p{font-size:18px;line-height:1.85;font-weight:400;margin:0;max-width:100%}
+.academy-details>a{display:inline-flex;gap:18px;align-items:center;padding:8px 0;color:#181818;text-decoration:none;font-size:16px;font-weight:700;position:relative}
+.academy-details>a:after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:currentColor;transform-origin:right;transition:transform .25s}
+.academy-details>a:hover:after{transform:scaleX(.7)}
+.academy-details>a>span{font-family:Arial,sans-serif;font-size:25px;line-height:1}
+.academy-details>a:focus-visible{outline:3px solid #a43c00;outline-offset:7px}
+.academy-motion{position:absolute;bottom:20px;inset-inline-end:24px;width:44px;height:44px;border:1px solid #d8d8d8;border-radius:50%;display:grid;place-items:center;background:#fff;color:#444;padding:0;cursor:pointer;transition:background .2s,color .2s,border-color .2s}.academy-motion:hover{background:#181818;border-color:#181818;color:#fff}.academy-motion:focus-visible{outline:2px solid #a43c00;outline-offset:5px}.academy-motion[hidden]{display:none}.academy-motion .motion-play{display:none}.academy-motion[aria-pressed=true] .motion-pause{display:none}.academy-motion[aria-pressed=true] .motion-play{display:block}
+@media(min-width:1700px){.academy-manifesto{width:min(76%,1320px)}}
+@media(max-width:767px){.academy-message{min-height:250px;padding:40px 0 26px;gap:24px}.academy-marker>span{font-size:34px}.academy-marker>small{font-size:10px}.academy-marquees{width:100%;gap:0}.academy-marquee{font-size:6vw}.academy-marquee--ink{font-size:5.8vw}.academy-manifesto{width:calc(100% - 32px);padding:30px 0 92px;gap:28px}.academy-eyebrow{gap:10px}.academy-eyebrow>img{width:56px;height:56px}.academy-eyebrow>p{font-size:10px}.academy-statement{font-size:5.2vw!important;line-height:1.4!important}.academy-details{max-width:420px;gap:22px}.academy-details>p{font-size:14px;line-height:1.9;max-width:310px}.academy-details>p>br{display:none}.academy-details>a{font-size:14px;gap:16px}.academy-motion{inset-inline-end:16px;bottom:18px}}
+@media(prefers-reduced-motion:reduce){.academy-marquee-track{transform:none!important;will-change:auto}.statement-line.is-revealing{clip-path:none!important;animation:none!important}.statement-line.is-revealing:after{display:none}.academy-details>a:after,.academy-motion{transition:none}}
+/* Reserve the approved physical track geometry from first paint. Static copies
+   are centered with a composited translation; enhancement causes no reflow. */
+
+.academy-lando:not(.rows-loop-ready) .academy-marquee-track > span[data-loop-copy] { display: none; }
+.academy-lando.rows-loop-ready .academy-marquees { width: 100%; grid-template-columns: minmax(0, 1fr); }
+.academy-lando.rows-loop-ready .academy-marquee { min-width: 0; width: 100%; direction: ltr; justify-content: flex-start; }
+.academy-lando.rows-loop-ready .academy-marquee-track { direction: ltr; flex: 0 0 auto; gap: clamp(28px, 5vw, 96px); translate: none; }
+.academy-lando.rows-loop-ready .academy-marquee-track > span { display: block; flex: 0 0 auto; direction: rtl; unicode-bidi: isolate; }
+@media (prefers-reduced-motion: reduce) {
+  .academy-lando.academy-lando .academy-marquee-track > span[data-loop-copy] { display: none; }
+}
+
+
+</style>

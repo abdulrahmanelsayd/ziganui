@@ -1,0 +1,45 @@
+---
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import { site, previewMode } from '../data/site';
+import { home } from '../data/home';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import '../styles/academy-identity.css';
+import '../styles/trial-footer.css';
+interface Props { title?: string; description?: string; }
+const { title, description = home.description } = Astro.props;
+const currentPath = Astro.url.pathname;
+const documentTitle = title ? `${title} | ${site.brand.nameAr}` : home.title;
+---
+<!doctype html>
+<html lang="ar-JO" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {previewMode && <meta name="robots" content="noindex,nofollow" />}
+    <meta name="theme-color" content="#FAF6EE" />
+    <link rel="icon" href="data:," />
+    <title>{documentTitle}</title>
+  </head>
+  <body data-header-page={currentPath === "/" ? "home" : "inner"} data-type-system="academy">
+    <a href="#main" class="skip-link" data-page-background>تخطَّ إلى المحتوى</a>
+    <SiteHeader currentPath={currentPath} />
+    <main id="main" tabindex="-1" data-page-background><slot /></main>
+    <SiteFooter currentPath={currentPath} />
+    <script>
+      import { initNavigation } from '../scripts/navigation';
+      import { initReveals } from '../scripts/reveals';
+      initNavigation();
+      initReveals();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+body[data-header-page="inner"] #main { padding-top: 54px; }
+.skip-link:focus { z-index: 100; }
+@media (width < 834px) { body[data-header-page="inner"] #main { padding-top: 52px; } }
+@media (scripting: none) { body[data-header-page="inner"] #main { padding-top: 0; } }
+</style>

@@ -1,0 +1,104 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import TrialSection from '../components/home/TrialSection.astro';
+import underlineSvg from '../assets/hero/truus-team-underline.svg?raw';
+import { site, trainingEnquiryUrl } from '../data/site';
+
+const office = site.locations.find(({ id }) => id === 'office');
+const training = site.locations.find(({ id }) => id === 'training');
+if (!office?.receptionLabel || !training) throw new Error('Contact requires the office reception hours and both locations.');
+
+const [officeCode, officeCity] = splitAddress(office.address);
+const [trainingCode, trainingCity] = splitAddress(training.address);
+const officeHours = office.receptionLabel.replace(/[0-9]/g, digit => '٠١٢٣٤٥٦٧٨٩'.charAt(Number(digit)));
+const titleMark = underlineSvg.trim().replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
+
+function splitAddress(address: string) {
+  const [code, ...city] = address.split('،');
+  return [code, city.join('،').trim()];
+}
+---
+<SiteLayout title="المقر والتواصل">
+  <div class="contact-proof">
+    <section class="c-banner" aria-labelledby="c-title">
+      <svg width="0" height="0" aria-hidden="true" focusable="false"><defs><clipPath id="contact-title-edge" clipPathUnits="objectBoundingBox"><path d="M0 0H1V.78Q.945 1 .8 1H.2Q.055 1 0 .78Z"/></clipPath></defs></svg>
+      <h1 id="c-title">المقر والتواصل</h1>
+    </section>
+
+    <section class="c-shell c-locations" id="locations" aria-labelledby="locations-title">
+      <header class="c-heading">
+        <p class="c-kicker">الزرقاء، الأردن</p>
+        <h2 id="locations-title">أين <span class="c-mark">تجدنا؟<Fragment set:html={titleMark} /></span></h2>
+        <p>المقر للاستقبال والاستفسارات، والملعب للحصص التدريبية.</p>
+      </header>
+      <div class="c-destinations">
+        <article class="c-place c-office" aria-labelledby="c-office-title">
+          <div class="c-place-top"><span class="c-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 10c0 4.5-7 9.5-7 9.5S5 14.5 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.1"/></svg></span><span class="c-tag">الاستقبال</span></div>
+          <h3 id="c-office-title">{office.title}</h3>
+          <p class="c-address"><bdi dir="ltr">{officeCode}</bdi> <span>{officeCity}</span></p>
+          <div class="c-detail"><strong>ساعات الاستقبال</strong><p>{officeHours} <span class="c-timezone">بتوقيت الأردن</span></p></div>
+          <a class="c-pill c-solid" href={office.mapUrl} target="_blank" rel="noopener noreferrer" aria-label="اتجاهات مقر الأكاديمية">اتجاهات المقر <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 17 17 6M7 6h10v10"/></svg></a>
+        </article>
+        <article class="c-place c-pitch" aria-labelledby="c-pitch-title">
+          <div class="c-place-top"><span class="c-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M12 5.5v13m-9.5-9h4v5h-4m19-5h-4v5h4"/><circle cx="12" cy="12" r="2.3"/></svg></span><span class="c-tag">التدريب</span></div>
+          <h3 id="c-pitch-title">{training.mapPlaceName}</h3>
+          <p class="c-address"><bdi dir="ltr">{trainingCode}</bdi> <span>{trainingCity}</span></p>
+          <div class="c-detail"><strong>مواعيد التدريب</strong><p>تواصل معنا لمعرفة مواعيد مجموعتك.</p></div>
+          <div class="c-actions">
+            <a class="c-pill c-outline" href={training.mapUrl} target="_blank" rel="noopener noreferrer">اتجاهات الملعب <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 17 17 6M7 6h10v10"/></svg></a>
+            <a class="c-text-link" href={trainingEnquiryUrl} data-training-enquiry target="_blank" rel="noopener noreferrer">اسأل عن المواعيد <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 17 17 6M7 6h10v10"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+  <TrialSection />
+</SiteLayout>
+
+<style>
+.contact-proof { --c-ink:#23211d; --c-muted:#605b51; --c-accent:#594c39; --c-line:#eee7dc; background:#fff; color:var(--c-ink); }
+.contact-proof .c-shell { width:min(1100px,calc(100% - 80px)); margin-inline:auto; }
+.contact-proof .c-banner { position:relative; display:grid; place-items:center; min-height:clamp(156px,20svh,224px); padding:16px 24px 28px; background:linear-gradient(135deg,#fcf9f2,#f5eee2); color:var(--c-ink); clip-path:url(#contact-title-edge); }
+.contact-proof .c-banner svg { position:absolute; inset:0; pointer-events:none; }
+.contact-proof .c-banner h1 { margin:0; font-size:clamp(30px,3.5vw,46px); font-weight:700; line-height:1.5; text-align:center; }
+.contact-proof .c-locations { padding-block:clamp(42px,5vw,70px) clamp(48px,7vw,92px); }
+.contact-proof .c-heading { text-align:center; margin:0 auto clamp(28px,3.5vw,48px); }
+.contact-proof .c-kicker { margin:0 0 10px; font-size:13px; font-weight:700; color:var(--c-accent); }
+.contact-proof .c-heading h2 { margin:0; font-size:clamp(34px,4.5vw,58px); line-height:1.38; letter-spacing:normal; font-weight:700; }
+.contact-proof .c-mark { position:relative; display:inline-block; white-space:nowrap; }
+.contact-proof .c-mark :global(svg) { display:block; position:absolute; inset-inline:0; bottom:-.10em; width:100%; height:.22em; color:#ff6b00; }
+.contact-proof .c-mark :global(svg path) { stroke:currentColor; }
+.contact-proof .c-heading > p:last-child { margin:22px auto 0; color:var(--c-muted); font-size:clamp(14px,1.4vw,17px); line-height:1.85; }
+.contact-proof .c-destinations { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(12px,2vw,22px); }
+.contact-proof .c-place { display:flex; flex-direction:column; align-items:flex-start; min-width:0; padding:clamp(22px,3.2vw,44px); border:1px solid var(--c-line); border-radius:28px; box-shadow:0 12px 34px #3c2c1410; }
+.contact-proof .c-office { background:#fcfaf5; }
+.contact-proof .c-pitch { background:#fff; }
+.contact-proof .c-place-top { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; margin-bottom:23px; }
+.contact-proof .c-icon { display:grid; place-items:center; width:50px; height:50px; flex:none; border-radius:17px; background:#f5eee2; color:var(--c-accent); }
+.contact-proof .c-tag { color:var(--c-accent); padding:5px 11px; border:1px solid var(--c-line); border-radius:100px; background:#fff; font-size:12px; font-weight:700; }
+.contact-proof .c-place h3 { margin:0; font-size:clamp(21px,2.45vw,33px); line-height:1.5; }
+.contact-proof .c-address { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:8px 0 21px; color:var(--c-muted); font-size:14px; }
+.contact-proof .c-address bdi { padding:2px 7px; border-radius:6px; background:#fff; border:1px solid var(--c-line); color:var(--c-ink); font-size:12px; }
+.contact-proof .c-detail { width:100%; flex:1; padding-block:16px 22px; border-top:1px solid var(--c-line); }
+.contact-proof .c-detail strong { font-size:14px; }
+.contact-proof .c-detail p { margin:4px 0 0; color:var(--c-muted); font-size:14px; line-height:1.85; }
+.contact-proof .c-timezone { display:block; font-size:12px; }
+.contact-proof .c-actions { display:flex; align-items:center; flex-wrap:wrap; gap:6px 16px; }
+.contact-proof .c-pill, .contact-proof .c-text-link { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; font-size:13px; font-weight:700; text-decoration:none; }
+.contact-proof .c-pill { padding:8px 17px; border:1px solid transparent; border-radius:100px; }
+.contact-proof .c-solid { color:#fff; background:#28251f; }
+.contact-proof .c-solid:hover { background:#40382d; }
+.contact-proof .c-outline { color:var(--c-ink); background:#fff; border-color:var(--c-line); }
+.contact-proof .c-outline:hover { border-color:var(--c-accent); }
+.contact-proof .c-text-link { color:var(--c-accent); }
+.contact-proof .c-text-link:hover { text-decoration:underline; text-underline-offset:4px; }
+.contact-proof a:focus-visible { outline:3px solid var(--c-accent); outline-offset:4px; }
+@media (max-width:767px) {
+  .contact-proof .c-shell { width:calc(100% - 32px); }
+  .contact-proof .c-banner { min-height:clamp(138px,20svh,180px); }
+  .contact-proof .c-banner h1 { font-size:30px; }
+  .contact-proof .c-destinations { grid-template-columns:minmax(0,1fr); }
+  .contact-proof .c-place { border-radius:22px; }
+}
+@media (max-width:359px) { .contact-proof .c-banner h1 { font-size:28px; } }
+</style>

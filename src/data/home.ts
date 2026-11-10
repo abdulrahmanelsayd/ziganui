@@ -1,0 +1,73 @@
+import { site, trainingEnquiryUrl } from './site';
+
+export const home = {
+  title: `${site.brand.nameAr} في ${site.brand.city}`,
+  description: `تدريب كرة قدم للبنات والشباب من ${site.audience.minimumAge} إلى ${site.audience.maximumAge} سنة في ${site.brand.city}، مع ${site.coach.displayName}. احجز تمرينتك التجريبية المجانية واستفسر عن المواعيد عبر واتساب.`,
+  hero: {
+    brand: 'زيغان',
+    lead: 'أكاديمية لها',
+    focus: 'منهج',
+    supporting: 'نطوّر المهارة، ونبني فهمًا أعمق للّعبة.',
+    audience: `للبنات والشباب من ${site.audience.minimumAge.toLocaleString('ar-JO', { useGrouping: false })} إلى ${site.audience.maximumAge.toLocaleString('ar-JO', { useGrouping: false })} عامًا · ${site.brand.city}، ${site.brand.country}.`,
+    primary: 'احجز تمرينتك المجانية',
+  },
+  intro: {
+    title: 'في زيغان، نبدأ من مستوى اللاعب ونبني عليه. نتعلّم أساسيات الكرة، ونطوّر فهم اللعبة والالتزام والروح الرياضية.',
+    description: 'تدريب عملي وحصص نظرية للبنات والشباب، ضمن مجموعات تراعي العمر والمستوى.',
+    link: 'عن الأكاديمية',
+  },
+  training: {
+    title: 'برامجنا التدريبية.',
+    programs: site.training.programs,
+    messages: {
+      grassroots: ['أول لمسة.', 'أول حكاية.'],
+      juniors: ['مهارة تكبر.', 'مع كل تمرين.'],
+      youth: ['شغفك باللعبة.', 'خذه أبعد.'],
+      goalkeepers: ['بين القائمين.', 'تبدأ حكايتك.'],
+      fitness: ['حركة أكثر.', 'جاهزية أكبر.'],
+    } satisfies Record<string, readonly [string, string]>,
+    programsLink: 'تعرّف على البرامج',
+    trackLabel: 'برامج زيغان التدريبية؛ اسحب لاستعراض البرامج',
+    previous: 'البرنامج السابق',
+    next: 'البرنامج التالي',
+    footer: 'برامج زيغان · للبنات والشباب',
+    description: 'تدريب عملي وحصص نظرية، ضمن مجموعات تراعي العمر والمستوى.',
+    cta: 'اسأل عن البرنامج',
+    href: trainingEnquiryUrl,
+  },
+  coach: {
+    eyebrow: 'بقيادة',
+    firstName: 'محمد',
+    lastName: 'القيسي',
+    role: 'مؤسس الأكاديمية وقائد فريق التدريب',
+    circleLead: 'قيادة تُلهم.',
+    title: ['وفريق يصنع', 'الفارق.'],
+    cardTitle: ['خبرات تتكامل.', 'وموهبة تتقدّم.'],
+    paragraph: 'إلى جانب الكابتن محمد القيسي، مجموعة من المدربين على أعلى مستوى؛ يجمعهم شغف اللعبة والاهتمام بتفاصيل كل لاعب، ليكبر في مهارته وفهمه وثقته.',
+    cta: 'تدرّب مع فريق زيغان',
+    note: 'ابدأ بتمرينة تجريبية مجانية',
+  },
+  players: {
+    lead: 'تعرّف على بعض',
+    focus: 'أبطال زيغان.',
+    regionLabel: 'صور لبعض أبطال زيغان',
+    listLabel: 'مختارات من صور أبطال زيغان',
+    previous: 'الصورة السابقة',
+    next: 'الصورة التالية',
+    instruction: 'اسحب الصور أو اختَر صورتك المفضلة.',
+  },
+  locations: {
+    title: 'قريبون من خطوتك الأولى.',
+    description: 'زورنا في مقر الأكاديمية، أو تعرّف على موقع التدريب.',
+    trainingEnquiryCta: 'المواعيد عبر واتساب',
+  },
+  trial: {
+    title: 'خطوتك الأولى تبدأ بتمرينة.',
+    description: 'جرّب أجواء زيغان في حصة مجانية، وتواصل معنا لمعرفة المجموعة المناسبة وتفاصيل الاشتراك.',
+    primary: 'احجز تمرينتك المجانية',
+  },
+  footer: {
+    tagline: 'كرة القدم، وفهم اللعبة، والروح الرياضية.',
+    copyright: `© 2026 ${site.brand.nameAr}. جميع الحقوق محفوظة.`,
+  },
+} as const;

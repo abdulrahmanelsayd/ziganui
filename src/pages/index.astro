@@ -1,0 +1,11 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import AcademyAbout from '../components/home/AcademyAbout.astro';
+import TrainingSection from '../components/home/TrainingSection.astro';
+import CoachSection from '../components/home/CoachSection.astro';
+import PlayersSection from '../components/home/PlayersSection.astro';
+import HeadquartersMapSection from '../components/home/HeadquartersMapSection.astro';
+import TrialSection from '../components/home/TrialSection.astro';
+---
+<SiteLayout><Hero /><AcademyAbout /><TrainingSection id="training" /><CoachSection showPageLink={true} /><PlayersSection showPageLink={true} /><HeadquartersMapSection /><TrialSection /></SiteLayout>

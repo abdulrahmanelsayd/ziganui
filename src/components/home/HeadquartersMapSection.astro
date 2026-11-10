@@ -1,0 +1,35 @@
+---
+import { headquartersMap as map } from '../../data/headquarters-map';
+import underline from '../../assets/hero/truus-team-underline.svg?raw';
+import '../../styles/headquarters-map.css';
+import SectionPageLink from '../ui/SectionPageLink.astro';
+interface Props { id?: string; }
+const { id = 'locations' } = Astro.props;
+const titleId = `${id}-title`;
+const titleMark = underline.replace('<svg ', '<svg class="hq-title-mark" aria-hidden="true" focusable="false" ');
+---
+<section class="hq-section" id={id} aria-labelledby={titleId}>
+  <div class="hq-content">
+    <header class="hq-heading">
+      <h2 id={titleId}><span>{map.headingLead}</span>{' '}<strong>{map.headingFocus}<Fragment set:html={titleMark} /></strong></h2>
+      <p>{map.supporting[0]}<br />{map.supporting[1]}</p>
+    </header>
+    <div class="hq-map-shell">
+      <iframe class="hq-map-js" data-map-src={map.embedUrl} width="1200" height="500" title={map.iframeTitle} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <noscript><div class="hq-map-fallback"><p>{map.fallbackSentence}</p><a href={map.mapUrl} target="_blank" rel="noopener noreferrer">{map.fallbackAction}</a></div></noscript>
+    </div>
+    <div class="hq-details">
+      <div class="hq-address">
+        <p class="hq-place">{map.title}</p>
+        <p class="hq-city">{map.city} · <bdi dir="ltr">{map.plusCode}</bdi></p>
+        <p class="hq-hours">{map.reception.lead}<bdi>{map.reception.start}</bdi>{map.reception.between}<bdi>{map.reception.end}</bdi>{map.reception.tail}</p>
+      </div>
+      <a class="hq-directions" href={map.mapUrl} target="_blank" rel="noopener noreferrer"><span>{map.directionsLabel}</span><span class="hq-direction-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6h12v12" /></svg></span></a>
+    </div>
+    <SectionPageLink href="/contact/" label="المقر وطرق التواصل" />
+  </div>
+  <script>
+    import { initHeadquartersMap } from '../../scripts/headquarters-map';
+    initHeadquartersMap();
+  </script>
+</section>

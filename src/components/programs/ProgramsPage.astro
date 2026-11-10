@@ -1,0 +1,55 @@
+---
+import { site, trainingEnquiryUrl } from '../../data/site';
+import { getProgramDetails } from '../../data/program-details';
+import underlineSvg from '../../assets/hero/truus-team-underline.svg?raw';
+import '../../styles/programs-detail.css';
+
+// Only the original trusted local SVG is inserted as raw artwork.
+const titleMark = underlineSvg.trim().replace('<svg ', '<svg class="p-title-mark" aria-hidden="true" focusable="false" ');
+---
+<script>
+  import { initProgramsPage } from '../../scripts/programs-detail';
+  initProgramsPage();
+</script>
+<div id="programs-page">
+  <section class="p-hero" aria-labelledby="programs-title">
+    <svg class="p-edge-definitions" width="0" height="0" aria-hidden="true" focusable="false"><defs><clipPath id="programs-title-edge" clipPathUnits="objectBoundingBox"><path d="M0 0H1V.78Q.945 1 .8 1H.2Q.055 1 0 .78Z"/></clipPath></defs></svg>
+    <h1 id="programs-title">التدريب والبرامج</h1>
+  </section>
+
+  <section class="p-introduction p-shell" aria-labelledby="programs-intro-title">
+    <header class="p-heading" data-p-motion><p class="p-eyebrow">برامج أكاديمية زيغان</p><h2 id="programs-intro-title"><span class="p-heading-line">تدريب منظّم.</span><span class="p-heading-line">لمراحل <span class="p-mark">مختلفة.<Fragment set:html={titleMark} /></span></span></h2><p>خمسة برامج لكرة القدم واللياقة، للبنات والشباب. نراعي عمر اللاعب ومستواه عند اختيار المجموعة، ونجمع بين التدريب العملي والحصص النظرية.</p></header>
+  </section>
+
+  <nav class="p-program-nav" aria-label="انتقل إلى البرنامج"><div class="p-shell p-nav-links">{site.training.programs.map(program => <a href={`#${program.id}`}><span>{program.name}</span><small>{program.ageCaption}</small></a>)}</div></nav>
+
+  <section class="p-age-programs p-shell" id="training" aria-labelledby="age-programs-title">
+    <header class="p-heading" data-p-motion><p class="p-eyebrow">البراعم والناشئون والشباب</p><h2 id="age-programs-title"><span class="p-heading-line">برامج الفئات</span><span class="p-heading-line"><span class="p-mark">العمرية.<Fragment set:html={titleMark} /></span></span></h2><p>يتغيّر تركيز التدريب مع كل مرحلة. ونراعي مستوى اللاعب إلى جانب عمره، ليكون التمرين مناسبًا لخبرته وقدرته على التطبيق.</p></header>
+    <div class="p-program-list">{site.training.programs.slice(0, 3).map((program, index) => <article class="p-program-row" id={program.id} data-program-id={program.id} aria-labelledby={`program-${program.id}-title`}><div class="p-program-copy" data-p-motion><header class="p-program-topline"><h3 id={`program-${program.id}-title`}>{program.name}.</h3><p class="p-age">{program.ageCaption}</p></header><p class="p-program-description">{getProgramDetails(program.id).description}</p><ul class="p-focus">{getProgramDetails(program.id).focus.map(item => <li>{item}</li>)}</ul><a class="p-text-link" href={trainingEnquiryUrl} target="_blank" rel="noopener noreferrer" aria-label={`استفسر عن برنامج ${program.name}`}>استفسر عن البرنامج <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></a></div><figure class="p-program-art" data-p-motion data-p-delay="80"><img src={`/images/programs/sticker-${index}.svg`} width="148" height="148" alt="" aria-hidden="true" loading="lazy" decoding="async" /></figure></article>)}</div>
+  </section>
+
+  <section class="p-specialist" aria-labelledby="specialist-title"><div class="p-shell p-special-panel">
+    <header class="p-heading" data-p-motion><p class="p-eyebrow">حراسة المرمى واللياقة البدنية</p><h2 id="specialist-title"><span class="p-heading-line">برامج <span class="p-mark">متخصصة.<Fragment set:html={titleMark} /></span></span></h2><p>تركيز على مهارات محددة داخل اللعبة، وعلى الجاهزية البدنية التي تساعد اللاعب على المشاركة في التدريب.</p></header>
+    <div class="p-special-grid">{site.training.programs.slice(3).map((program, offset) => { const index = offset + 3; return <article class="p-special-program" id={program.id} data-program-id={program.id} aria-labelledby={`program-${program.id}-title`} data-p-motion data-p-delay={offset * 80}><header class="p-special-identity"><div><h3 id={`program-${program.id}-title`}>{program.name}.</h3><p class="p-age">{program.ageCaption}</p></div><img src={`/images/programs/sticker-${index}.svg`} width="148" height="148" alt="" aria-hidden="true" loading="lazy" decoding="async" /></header><p class="p-program-description">{getProgramDetails(program.id).description}</p><ul class="p-focus">{getProgramDetails(program.id).focus.map(item => <li>{item}</li>)}</ul><a class="p-text-link" href={trainingEnquiryUrl} target="_blank" rel="noopener noreferrer" aria-label={`استفسر عن برنامج ${program.name}`}>استفسر عن البرنامج <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></a></article>; })}</div>
+  </div></section>
+
+  <section class="p-joining p-shell" id="join" aria-labelledby="joining-title">
+    <header class="p-heading" data-p-motion><p class="p-eyebrow">الخطوة الأولى</p><h2 id="joining-title"><span class="p-heading-line">اختيار المجموعة.</span><span class="p-heading-line">يبدأ <span class="p-mark">بالتواصل.<Fragment set:html={titleMark} /></span></span></h2><p>العمر يساعدنا على تحديد الفئة، والمستوى يساعدنا على اختيار المجموعة. تواصل معنا للتعرّف على الخيارات المناسبة قبل حجز التمرينة التجريبية.</p></header>
+    <ol class="p-join-steps">
+      <li data-p-motion><span class="p-step-number" aria-hidden="true">٠١</span><h3>شاركنا عمر اللاعب</h3><p>أخبرنا بعمره وخبرته السابقة بكرة القدم، وما يرغب في تطويره.</p></li>
+      <li data-p-motion data-p-delay="70"><span class="p-step-number" aria-hidden="true">٠٢</span><h3>تعرّف على الخيارات</h3><p>نوضح البرامج والمجموعات والمواعيد المتاحة، مع مراعاة العمر والمستوى.</p></li>
+      <li data-p-motion data-p-delay="140"><span class="p-step-number" aria-hidden="true">٠٣</span><h3>نسّق التمرينة التجريبية</h3><p>احجز موعد التمرينة المجانية للتعرّف على التدريب داخل الأكاديمية.</p></li>
+    </ol>
+    <div class="p-join-action" data-p-motion><a class="p-pill-link" href={trainingEnquiryUrl} target="_blank" rel="noopener noreferrer" data-training-enquiry>استفسر عن المواعيد <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M18 6 6 18M6 6v12h12"/></svg></a><p>المواعيد المتاحة تُعرف بالتواصل المباشر مع الأكاديمية.</p></div>
+  </section>
+
+  <section class="p-information" id="questions" aria-labelledby="information-title"><div class="p-shell">
+    <header class="p-heading" data-p-motion><p class="p-eyebrow">قبل الانضمام</p><h2 id="information-title"><span class="p-heading-line">تفاصيل <span class="p-mark">الاشتراك.<Fragment set:html={titleMark} /></span></span></h2><p>تُقام التدريبات في ملاعب مدينة الزرقاء الرياضية.<br>للاستفسار أو زيارة المقر، <a class="p-inline-link" href="/contact/">تعرّف على طرق التواصل.</a></p></header>
+    <div class="p-faq" data-p-motion>
+      <details><summary>كيف يكون الاشتراك؟<span aria-hidden="true"></span></summary><p>الاشتراك شهري. لمعرفة قيمة الاشتراك وتفاصيله، يُرجى التواصل مباشرة مع الأكاديمية.</p></details>
+      <details><summary>ما مواعيد التدريب؟<span aria-hidden="true"></span></summary><p>مواعيد التدريب متغيّرة. تواصل معنا عبر واتساب لمعرفة المواعيد المتاحة للمجموعة المناسبة.</p><a class="p-text-link" href={trainingEnquiryUrl} target="_blank" rel="noopener noreferrer">اسأل عن المواعيد <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></a></details>
+      <details><summary>هل يشمل الاشتراك الزي الرياضي؟<span aria-hidden="true"></span></summary><p>الزي الرياضي خارج قيمة الاشتراك. يمكن معرفة تفاصيله من خلال التواصل مع الأكاديمية.</p></details>
+      <details><summary>هل تتوفر المواصلات؟<span aria-hidden="true"></span></summary><p>تتوفر خيارات للمواصلات بحسب المنطقة. تواصل معنا لمعرفة إمكانية الخدمة وتفاصيلها.</p></details>
+    </div>
+  </div></section>
+</div>

@@ -1,0 +1,85 @@
+.coach-constellation{background:#fff;color:#181818;direction:rtl;font-family:Swissra,Arial,sans-serif;font-synthesis:none;letter-spacing:0;padding:40px 0 52px;overflow:clip;scroll-margin-top:0}
+.coach-constellation *{box-sizing:border-box}
+.coach-board{width:min(1380px,calc(100% - 96px));margin:auto;display:grid;grid-template-columns:minmax(0,.41fr) minmax(0,.59fr);gap:24px;direction:ltr;align-items:stretch}
+.coach-poster{position:relative;min-width:0;display:flex;flex-direction:column;background:#d84b00;border-radius:22px;overflow:hidden;isolation:isolate;direction:rtl}
+.coach-poster-type{position:relative;flex:none;padding:30px 34px 0;text-align:right}
+.coach-byline{display:inline-block;position:relative;font-size:25px;line-height:1.25;font-weight:400;color:#fff;margin:0 0 18px}
+.coach-poster-mark{position:absolute;width:100%;height:.12em;bottom:-.1em;right:0;color:#fff;overflow:visible}
+.coach-poster-mark path{stroke:#fff}
+.coach-poster h3{margin:0;font-size:clamp(64px,7.1vw,108px);font-weight:700;line-height:1.02;letter-spacing:0;color:#fff}
+.coach-poster h3>span{display:block;white-space:nowrap}
+.coach-poster h3>strong{display:block;font-size:.48em;line-height:1.3;font-weight:400;white-space:nowrap}
+.coach-poster-role{font-size:13px;line-height:1.7;font-weight:500;color:#000;max-width:none;margin:12px 0 0}
+.coach-portrait-stage{position:relative;isolation:isolate;min-height:0;flex:1;margin-top:24px;overflow:hidden}
+.coach-halo{position:absolute;z-index:0;top:0;left:5%;width:90%;height:auto;pointer-events:none}
+.coach-poster-photo{position:absolute;z-index:1;width:112%;left:50%;transform:translateX(-50%);top:14px;display:block}
+.coach-poster-photo img{display:block;width:100%;max-width:none;height:auto}
+.coach-orbit{position:relative;min-width:0;aspect-ratio:1;isolation:isolate;direction:rtl}
+.coach-orbit::before{content:"";position:absolute;z-index:-1;inset:0;border-radius:50%;background:#181818}
+.coach-orbit-heading{position:absolute;top:10.5%;left:10%;width:80%;text-align:center;color:#fff}
+.coach-orbit-heading>p{font-size:clamp(20px,1.6vw,23px);line-height:1.5;font-weight:700;color:#d84b00;margin:0 0 6px;max-width:none}
+.coach-orbit-heading h2{font-size:clamp(29px,3.3vw,48px);line-height:1.2;font-weight:400;margin:0;color:#fff;letter-spacing:0}
+.coach-orbit-heading h2>span,.coach-orbit-heading h2>strong{display:block;white-space:nowrap}
+.coach-orbit-heading h2>strong{font-weight:700}
+.coach-team-paper{position:absolute;top:35.5%;left:11%;width:78%;border-radius:16px;background:#faf6ee;color:#181818;padding:26px 28px;text-align:right}
+.coach-team-paper h3{font-size:clamp(23px,2.35vw,34px);line-height:1.25;font-weight:700;margin:0;color:#181818;letter-spacing:0}
+.coach-team-paper h3>span{display:block;white-space:nowrap}
+.coach-paper-divider{display:block;width:58%;height:2px;background:#181818;margin:16px 0}
+.coach-team-paper>p{font-size:15px;line-height:1.85;font-weight:400;max-width:none;margin:0;color:#181818}
+.coach-team-sticker{position:absolute;left:-20px;top:-30px;width:82px;height:82px;pointer-events:none}
+.coach-orbit-action{position:absolute;bottom:8%;left:12%;width:76%;display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center}
+.coach-orbit-action a{display:inline-flex;align-items:center;justify-content:center;gap:13px;min-height:46px;padding:10px 20px;border-radius:999px;background:#fff;color:#181818;font-size:14px;line-height:1.7;font-weight:500;text-decoration:none}
+.coach-orbit-action a:hover{background:#f0ebe6}
+.coach-orbit-action a:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.coach-orbit-action>span{font-size:12px;line-height:1.7;color:#eee;max-width:100%}
+@media(width < 1100px){
+ .coach-constellation{padding:32px 0 38px}
+ .coach-board{width:min(620px,calc(100% - 40px));display:flex;flex-direction:column;gap:20px}
+ .coach-poster{width:100%;border-radius:16px;flex:none}
+ .coach-poster-type{padding:24px 24px 0}
+ .coach-byline{font-size:24px;margin-bottom:14px}
+ .coach-poster h3{font-size:clamp(58px,15vw,76px);line-height:1.05}
+ .coach-poster h3>strong{font-size:.52em;line-height:1.35}
+ .coach-poster-role{font-size:12px;line-height:1.8;margin-top:10px}
+ .coach-portrait-stage{flex:none;height:clamp(300px,84vw,450px);margin-top:22px}
+ .coach-poster-photo{top:14px;width:108%}
+ .coach-halo{width:92%;left:4%;top:0}
+ .coach-orbit{width:100%;aspect-ratio:auto;border-radius:16px;background:#181818;padding:32px 20px 28px;display:flex;flex-direction:column;gap:28px;flex:none}
+ .coach-orbit::before{display:none}
+ .coach-orbit-heading{position:static;width:100%;text-align:center}
+ .coach-orbit-heading>p{font-size:21px;margin-bottom:7px}
+ .coach-orbit-heading h2{font-size:34px;line-height:1.2}
+ .coach-team-paper{position:relative;top:auto;left:auto;width:100%;padding:26px 20px 24px;border-radius:12px}
+ .coach-team-paper h3{font-size:25px;line-height:1.3}
+ .coach-team-paper>p{font-size:14px;line-height:1.9}
+ .coach-team-sticker{width:60px;height:60px;top:-20px;left:8px}
+ .coach-paper-divider{margin-block:15px}
+ .coach-orbit-action{position:static;width:100%;gap:10px}
+ .coach-orbit-action a{font-size:14px;min-height:46px;padding:10px 18px;max-width:100%}
+ .coach-orbit-action>span{font-size:12px}
+}
+@media(width >= 600px) and (width < 1100px){
+ .coach-poster-type{padding:30px 36px 0}
+ .coach-poster h3{font-size:90px}
+ .coach-poster h3>strong{font-size:44px}
+ .coach-poster-role{font-size:14px}
+ .coach-portrait-stage{height:450px;margin-top:26px}
+ .coach-poster-photo{width:100%}
+ .coach-orbit{padding:36px 36px 30px;gap:32px}
+ .coach-orbit-heading h2{font-size:38px}
+ .coach-team-paper{padding:28px}
+ .coach-team-paper h3{font-size:30px}
+ .coach-team-paper>p{font-size:15px}
+ .coach-team-sticker{width:72px;height:72px;top:-22px;left:12px}
+}
+@media(width < 360px){
+ .coach-board{width:calc(100% - 32px)}
+ .coach-poster-type{padding-inline:22px}
+ .coach-orbit{padding-inline:16px;gap:26px}
+ .coach-orbit-heading h2{font-size:30px}
+ .coach-team-paper{padding-inline:18px;padding-top:44px}
+ .coach-team-paper h3{font-size:22px}
+ .coach-team-paper>p{font-size:13px}
+ .coach-team-sticker{top:-15px;width:55px;height:55px}
+ .coach-orbit-action a{font-size:13px;padding-inline:15px}
+}

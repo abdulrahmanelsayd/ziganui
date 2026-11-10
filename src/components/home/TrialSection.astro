@@ -1,0 +1,6 @@
+---
+import { site, trialUrl } from '../../data/site';
+interface Props { id?: string; }
+const { id = 'trial' } = Astro.props;
+---
+<section class="trial-apple" id={id} aria-labelledby={`${id}-title`}><div class="trial-apple-panel"><div class="trial-apple-content"><p class="trial-apple-eyebrow">أكاديمية زيغان</p><h2 id={`${id}-title`}><span>خطوتك الأولى.</span> <strong>تبدأ بتمرينة.</strong></h2><p class="trial-apple-description">تمرينة مجانية، ومجموعة تناسب عمرك ومستواك.</p><div class="trial-apple-actions"><a class="trial-apple-primary" href={trialUrl} target="_blank" rel="noopener noreferrer" data-trial>احجز تمرينتك المجانية</a><a class="trial-apple-call" href={site.contact.phoneHref} aria-label="اتصل بالأكاديمية" title="اتصل بالأكاديمية"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.3 3.5 5 4.2c-.7.2-1.2.8-1.1 1.6.8 7.4 6.9 13.5 14.3 14.3.8.1 1.4-.4 1.6-1.1l.7-3.3-4.5-2-1.7 2a13.1 13.1 0 0 1-6-6l2-1.7-2-4.5Z"/></svg></a></div></div></div></section>

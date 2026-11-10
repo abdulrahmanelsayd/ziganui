@@ -1,0 +1,110 @@
+{
+  "brand": {
+    "nameAr": "أكاديمية زيغان لكرة القدم",
+    "shortNameAr": "زيغان",
+    "nameEn": "ZIGAN FC ACADEMY",
+    "sport": "كرة القدم",
+    "city": "الزرقاء",
+    "country": "الأردن",
+    "locale": "ar-JO",
+    "direction": "rtl",
+    "trainingHasStarted": true
+  },
+  "audience": {
+    "minimumAge": 6,
+    "maximumAge": 18,
+    "acceptsBoys": true,
+    "acceptsGirls": true,
+    "groupingFactors": ["العمر", "المستوى"]
+  },
+  "coach": {
+    "name": "محمد القيسي",
+    "displayName": "الكابتن محمد القيسي",
+    "role": "مؤسس الأكاديمية ومدربها",
+    "university": "الجامعة الأردنية",
+    "fieldOfStudy": "التربية البدنية",
+    "graduated": true,
+    "firstAidCourses": true,
+    "experience": ["تقييم اللاعبين", "قياسات تكوين الجسم باستخدام أجهزة InBody"],
+    "photo": null
+  },
+  "training": {
+    "freeTrial": true,
+    "practicalSessions": true,
+    "theorySessions": true,
+    "programs": [
+      { "id": "grassroots", "name": "براعم", "minimumAge": 6, "maximumAge": 9, "allCategories": false, "ageCaption": "من ٦ إلى ٩ سنوات" },
+      { "id": "juniors", "name": "ناشئين", "minimumAge": 10, "maximumAge": 13, "allCategories": false, "ageCaption": "من ١٠ إلى ١٣ سنة" },
+      { "id": "youth", "name": "شباب", "minimumAge": 14, "maximumAge": 18, "allCategories": false, "ageCaption": "من ١٤ إلى ١٨ سنة" },
+      { "id": "goalkeepers", "name": "حراس مرمى", "minimumAge": 8, "maximumAge": 18, "allCategories": false, "ageCaption": "من ٨ إلى ١٨ سنة" },
+      { "id": "fitness", "name": "لياقة بدنية", "minimumAge": null, "maximumAge": null, "allCategories": true, "ageCaption": "لجميع الفئات" }
+    ]
+  },
+  "subscriptions": {
+    "period": "شهري",
+    "publishPrices": false,
+    "enquiryRequired": true,
+    "transportOptions": true,
+    "transportDependsOnArea": true,
+    "uniformIncluded": false
+  },
+  "contact": {
+    "phoneLocal": "0771377736",
+    "phoneInternational": "+962771377736",
+    "phoneHref": "tel:+962771377736",
+    "whatsappLocal": "0772010200",
+    "whatsappInternationalDigits": "962772010200",
+    "whatsappBaseUrl": "https://wa.me/962772010200",
+    "trialMessage": "مرحبًا، أرغب بحجز تمرين تجريبي مجاني في أكاديمية زيغان.",
+    "generalMessage": "مرحبًا، أرغب بالاستفسار عن التدريب والاشتراك في أكاديمية زيغان.",
+    "trainingEnquiryMessage": "مرحبًا، أرغب بالاستفسار عن مواعيد التدريب المتاحة في أكاديمية زيغان.",
+    "facebook": "https://www.facebook.com/share/1G2QLqRDVK/?mibextid=wwXIfr",
+    "instagram": "https://www.instagram.com/zigan_academy7/",
+    "email": null
+  },
+  "locations": [
+    {
+      "id": "office",
+      "title": "مقر الأكاديمية",
+      "mapPlaceName": "اكاديمية زيغان الرياضية",
+      "address": "4383+M2G، الزرقاء، الأردن",
+      "mapUrl": "https://maps.app.goo.gl/wmTUWtBvnq1oQ89C6?g_st=iwb",
+      "receptionEveryDay": true,
+      "receptionLabel": "يوميًا من 9 صباحًا حتى 12 منتصف الليل",
+      "photo": null
+    },
+    {
+      "id": "training",
+      "title": "ملعب التدريب",
+      "mapPlaceName": "ملاعب مدينة الزرقاء الرياضية",
+      "address": "33FF+C99، الزرقاء، الأردن",
+      "mapUrl": "https://maps.app.goo.gl/naETcqP2jgNcXHMdA?g_st=iwb",
+      "receptionEveryDay": null,
+      "receptionLabel": null,
+      "photo": null
+    }
+  ],
+  "activity": {
+    "friendlyMatchesHaveTakenPlace": true,
+    "winsReportedByOwner": true,
+    "verifiedMatchRecords": [],
+    "verifiedTournaments": []
+  },
+  "assets": {
+    "logo": "src/assets/brand/zigan-logo.png",
+    "heroPhoto": null,
+    "players": [],
+    "albums": [],
+    "videosAllowed": false,
+    "fontFamily": "Swissra",
+    "fontManifest": "fonts/swissra/sources.json"
+  },
+  "editorialNotes": [
+    "اعتماد مواعيد استقبال المقر التي أكدها صاحب الأكاديمية، لا عبارة مفتوح على مدار الساعة في قائمة خرائط جوجل.",
+    "اسم الملعب هنا هو الاسم الظاهر في رابط الخرائط الذي أرسله صاحب الأكاديمية؛ لا تُنشئ ملعبًا إضافيًا من اختلاف اسم الملعب في الإعلان.",
+    "تقييمات ملعب التدريب ومراجعاته تخص الملعب، ولا تمثل تقييمات للأكاديمية.",
+    "الأسعار لا تظهر على الموقع، والاشتراك بالاستفسار المباشر.",
+    "صور المتدربين وأسماؤهم وتفاصيل تكريمهم لم تصل بعد.",
+    "مواعيد التدريب متغيرة ويُستفسر عنها عبر واتساب؛ لا يُنشر جدول ثابت على الموقع."
+  ]
+}

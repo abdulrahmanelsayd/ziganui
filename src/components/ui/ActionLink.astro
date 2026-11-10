@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'text';
+  external?: boolean;
+  class?: string;
+  trial?: boolean;
+}
+const { href, variant = 'text', external = false, class: className, trial = false } = Astro.props;
+---
+<a href={href} class:list={['action-link', variant, className]} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} data-trial={trial || undefined}>
+  <slot />
+</a>
+<style>
+  .action-link { display: inline-flex; align-items: center; justify-content: center; font-size: 15px; line-height: 1.5; font-weight: 500; min-height: 48px; }
+  .primary { padding: 12px 24px; border-radius: 999px; color: var(--color-on-action); background: var(--color-action); transition: background 180ms; text-align: center; }
+  .primary:hover { background: var(--color-action-hover); }
+  .text { text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  .text:hover, .text:focus-visible { text-decoration: underline; }
+</style>

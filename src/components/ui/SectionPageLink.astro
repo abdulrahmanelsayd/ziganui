@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  surface?: 'light' | 'dark';
+}
+const { href, label, surface = 'light' } = Astro.props;
+---
+<div class:list={['section-page-link', { 'section-page-link-dark': surface === 'dark' }]}>
+  <a href={href}><span>{label}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6v12h12" /></svg></a>
+</div>
+<style>
+  .section-page-link{display:flex;justify-content:center;margin-top:24px;padding-inline:16px;max-width:100%;box-sizing:border-box}
+  .section-page-link a{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;min-width:0;max-width:100%;font-family:Swissra,Arial,sans-serif;font-size:14px;font-weight:700;line-height:1.7;text-align:center;color:#181818;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;transition:color 180ms}
+  .section-page-link a:hover{color:#A43C00}
+  .section-page-link-dark a{color:#F0EBE6}
+  .section-page-link-dark a:hover{color:#FF6B00}
+  .section-page-link svg{flex-shrink:0}
+  .section-page-link a:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+  @media(width < 768px){.section-page-link{margin-top:20px}}
+  @media(prefers-reduced-motion:reduce){.section-page-link a{transition:none}}
+</style>

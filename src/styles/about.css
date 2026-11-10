@@ -1,0 +1,184 @@
+body:has(#about-page){background:#fff}
+#about-page{--about-ink:#181818;--about-muted:#66635f;--about-accent:#D84B00;--about-link:#a63c00;--about-light:#f7f5f1;background:#fff;color:var(--about-ink);font-family:Swissra,Arial,sans-serif;direction:rtl;overflow:clip}
+#about-page *{min-width:0}
+#about-page .about-shell{width:min(1160px,calc(100% - 80px));margin-inline:auto}
+#about-page :is(h1,h2,h3,p,figure,dl,dd){margin:0;max-width:none;letter-spacing:0;font-style:normal}
+#about-page section[id]{scroll-margin-top:0}
+#about-page h2{font-size:clamp(34px,3.45vw,48px);line-height:1.45;font-weight:700}
+#about-page h2{text-align:center}
+#about-page .about-heading-line{display:block;position:relative;width:fit-content;max-width:100%;margin-inline:auto;padding:.06em .1em .17em;color:inherit}
+#about-page .about-heading-line:nth-child(2){color:var(--about-muted)}
+#about-page .about-mark{position:relative;display:inline-block;white-space:nowrap;color:var(--about-accent)}
+#about-page .about-title-mark{position:absolute;inset-inline-start:-.025em;bottom:-.07em;width:calc(100% + .05em);height:.12em;overflow:visible;pointer-events:none}
+#about-page .about-eyebrow{font-size:13px;line-height:1.8;font-weight:500;color:var(--about-muted);margin-bottom:17px}
+#about-page .about-hero{height:clamp(156px,20svh,224px);display:grid;place-items:center;position:relative;isolation:isolate;color:#fff;padding:16px 24px 28px;text-align:center}
+#about-page .about-hero:before{content:"";position:absolute;inset:0;background:var(--about-accent);z-index:-1;clip-path:url(#about-title-edge);border-radius:0 0 20% 20% / 0 0 22% 22%}
+#about-page .about-edge-definitions{position:absolute;pointer-events:none}
+#about-page h1{font-size:clamp(30px,3.5vw,46px);line-height:1.5;font-weight:700}
+#about-page .about-text-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;font-size:15px;line-height:1.8;font-weight:500;color:var(--about-link);text-decoration:none;transition:color .2s}
+#about-page .about-text-link svg{flex-shrink:0;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+#about-page .about-text-link:hover{color:var(--about-ink)}
+#about-page .about-text-link:hover svg{transform:translateX(-4px)}
+#about-page a:focus-visible,#about-page summary:focus-visible{outline:2px solid var(--about-link);outline-offset:5px;border-radius:3px}
+#about-page .about-reading{font-size:17px;line-height:1.95;color:var(--about-muted);font-weight:400}
+#about-page .about-reading p+p{margin-top:16px}
+#about-page .about-introduction{padding-block:68px 0}
+#about-page .about-intro-grid{text-align:center}
+#about-page .about-intro-copy{text-align:center}
+#about-page .about-intro-copy h2{font-size:clamp(34px,3.25vw,46px)}
+#about-page .about-intro-body{padding-top:22px;max-width:720px;margin-inline:auto}
+#about-page .about-intro-body .about-text-link{margin-top:16px}
+#about-page .about-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;padding-block:26px 28px;border-top:1px solid #e1ded8;border-bottom:1px solid #e1ded8}
+#about-page .about-facts>div{padding-inline:28px;border-inline-start:1px solid #e1ded8;text-align:center}
+#about-page .about-facts>div:first-child{padding-inline-start:0;border:0}
+#about-page .about-facts dt{font-size:12px;color:var(--about-muted);margin-bottom:8px;line-height:1.7}
+#about-page .about-facts dd{font-size:20px;line-height:1.75;font-weight:500}
+#about-page .about-method{padding-block:88px 80px}
+#about-page .about-section-heading{text-align:center;max-width:730px;margin-inline:auto}
+#about-page .about-section-heading>p:not(.about-eyebrow){font-size:17px;line-height:1.95;color:var(--about-muted);margin-top:23px}
+#about-page .about-method-board{display:grid;grid-template-columns:1fr .9fr;gap:100px;align-items:center;margin-top:44px}
+#about-page .about-method-steps article{display:grid;grid-template-columns:36px 1fr;gap:20px;padding-block:28px;border-top:1px solid #e1ded8}
+#about-page .about-step-number{font-size:21px;line-height:1.8;color:var(--about-accent);font-weight:400}
+#about-page .about-method-steps h3{font-size:23px;line-height:1.6;margin-bottom:9px}
+#about-page .about-method-steps p{font-size:16px;line-height:1.95;color:var(--about-muted)}
+#about-page .about-pitch{width:100%;max-width:330px;justify-self:center;padding:16px}
+#about-page .about-pitch svg{display:block;width:100%;height:auto}
+#about-page .about-direction{padding-bottom:88px}
+#about-page .about-direction-panel{padding:50px 60px 34px;background:var(--about-ink);color:#faf6ee;border-radius:24px}
+#about-page .about-direction-panel .about-eyebrow{color:#c4beb5}
+#about-page .about-direction-panel .about-heading-line{color:#faf6ee}
+#about-page .about-direction-panel .about-mark{color:#ff9352}
+#about-page .about-direction-copy{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:34px}
+#about-page .about-direction h2{font-size:44px}
+#about-page .about-direction h3{font-size:20px;font-weight:500;line-height:1.8;color:#ff9352;margin-bottom:9px}
+#about-page .about-direction-copy p{font-size:17px;line-height:1.95;color:#d6d1c9}
+#about-page .about-direction article+article{margin-top:0}
+#about-page .about-values{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #49453f;padding-top:25px;margin-top:34px}
+#about-page .about-values>p{font-size:12px;color:#c4beb5}
+#about-page .about-values ul{display:flex;gap:36px;font-size:14px;line-height:1.8}
+#about-page .about-programs{padding-block:0 88px}
+#about-page .about-program-table{width:min(900px,100%);margin:34px auto 0}
+#about-page .about-programs header>p:not(.about-eyebrow){font-size:17px;line-height:1.95;color:var(--about-muted);margin:24px 0 15px}
+#about-page .about-program-table table{border-collapse:collapse;width:100%;text-align:start;table-layout:fixed}
+#about-page .about-program-table caption{text-align:start;font-size:12px;color:var(--about-muted);padding-bottom:15px}
+#about-page .about-program-table th{text-align:start;font-size:12px;line-height:1.8;font-weight:400;color:var(--about-muted);padding:12px 0;border-bottom:1px solid #ccc7bf}
+#about-page .about-program-table th:last-child{width:48%}
+#about-page .about-program-table td{font-size:18px;line-height:1.8;padding:19px 0;border-bottom:1px solid #e1ded8;vertical-align:middle}
+#about-page .about-program-table td:first-child{font-weight:500}
+#about-page .about-program-table td:last-child{font-size:15px;color:var(--about-muted)}
+#about-page .about-team{background:var(--about-light);padding-block:80px}
+#about-page .about-team-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:88px;align-items:center;margin-top:38px}
+#about-page .about-team-person{padding-top:24px;border-top:1px solid #d8d3ca}
+#about-page .about-team-person h3{font-size:22px;line-height:1.7}
+#about-page .about-team-person p{font-size:12px;line-height:1.8;color:var(--about-muted);margin-top:6px}
+#about-page .about-team .about-reading{font-size:16px;margin-top:20px}
+#about-page .about-team-photo{height:510px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;border-radius:20px;background:#e9e3d7}
+#about-page .about-team-photo img{width:auto;max-width:100%;height:97%;object-fit:contain;object-position:center bottom}
+#about-page .about-join{padding-block:88px 76px}
+#about-page .about-faq{width:min(900px,100%);margin:34px auto 0}
+#about-page .about-join h2{font-size:39px}
+#about-page .about-join-heading>p:not(.about-eyebrow){font-size:17px;line-height:1.95;color:var(--about-muted);margin:23px 0 15px}
+#about-page .about-faq details{border-bottom:1px solid #d8d3ca}
+#about-page .about-faq details:first-child{border-top:1px solid #d8d3ca}
+#about-page .about-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px;padding:19px 0;font-size:16px;font-weight:500;line-height:1.8}
+#about-page .about-faq summary::-webkit-details-marker{display:none}
+#about-page .about-faq summary>span{position:relative;width:18px;height:18px;flex-shrink:0;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+#about-page .about-faq summary>span:before,#about-page .about-faq summary>span:after{content:"";position:absolute;background:#77736e;inset:8px 1px auto;height:1.5px}
+#about-page .about-faq summary>span:after{transform:rotate(90deg)}
+#about-page .about-faq details[open] summary>span{transform:rotate(45deg)}
+#about-page .about-faq details>p{font-size:15px;line-height:1.95;color:var(--about-muted);padding:0 0 23px 24px}
+#about-page .about-faq details>.about-text-link{font-size:14px;margin-bottom:18px}
+/* Visible by default. JavaScript only prepares offscreen nodes after installing the observer. */
+#about-page [data-about-motion]{transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1);transition-delay:var(--about-delay,0ms)}
+#about-page [data-about-motion].about-waiting{opacity:0;transform:translateY(24px)}
+#about-page .about-pitch.about-visible svg{animation:about-pitch-enter .95s cubic-bezier(.22,1,.36,1) both}
+@keyframes about-pitch-enter{from{transform:scale(.96)}to{transform:scale(1)}}
+/* Whole Arabic lines reveal together; the supplied Home underline draws once. */
+#about-page.about-enhanced .about-visible .about-heading-line{animation:about-heading-enter .7s cubic-bezier(.215,.61,.355,1) both}
+#about-page.about-enhanced .about-visible .about-heading-line:nth-child(2){animation-delay:.1s}
+#about-page.about-enhanced .about-visible .about-title-mark{animation:about-mark-draw .75s cubic-bezier(.22,1,.36,1) .35s both}
+@keyframes about-heading-enter{from{clip-path:inset(-5% 0 -15% 100%)}to{clip-path:inset(-5% 0 -15% 0)}}
+@keyframes about-mark-draw{from{clip-path:inset(-30% 0 -30% 100%)}to{clip-path:inset(-30% 0 -30% 0)}}
+@media(768px<=width<1100px){
+ #about-page .about-shell{width:calc(100% - 64px)}
+ #about-page .about-intro-grid,#about-page .about-team-grid,#about-page .about-programs,#about-page .about-join{gap:44px}
+ #about-page .about-method-board{gap:48px}
+ #about-page .about-direction-panel{gap:36px;padding-inline:36px}
+ #about-page .about-direction-copy{gap:36px}
+ #about-page .about-direction h2{font-size:37px}
+ #about-page .about-values ul{gap:22px}
+ #about-page .about-team-photo{height:470px}
+ #about-page .about-join h2{font-size:34px}
+}
+@media(width<768px){
+ #about-page .about-shell{width:calc(100% - 40px)}
+ #about-page h2{font-size:clamp(28px,7.7vw,37px);line-height:1.5}
+ #about-page .about-eyebrow{font-size:12px;margin-bottom:13px}
+ #about-page .about-hero{height:clamp(138px,20svh,180px);padding-bottom:26px}
+ #about-page h1{font-size:30px}
+ #about-page .about-introduction{padding-top:42px}
+ #about-page .about-intro-copy h2{font-size:clamp(29px,8.1vw,38px)}
+ #about-page .about-reading{font-size:15px;line-height:1.95}
+ #about-page .about-intro-body{padding-top:17px}
+ #about-page .about-reading p+p{margin-top:13px}
+ #about-page .about-intro-body .about-text-link{margin-top:10px}
+ #about-page .about-text-link{font-size:14px}
+ #about-page .about-facts{margin-top:28px;padding-block:20px;gap:16px 10px}
+ #about-page .about-facts>div{padding-inline:10px}
+ #about-page .about-facts dt{font-size:10px;margin-bottom:6px}
+ #about-page .about-facts dd{font-size:13px;line-height:1.85}
+ #about-page .about-method{padding-block:58px 52px}
+ #about-page .about-section-heading>p:not(.about-eyebrow){font-size:15px;margin-top:19px}
+ #about-page .about-method-board{display:flex;flex-direction:column-reverse;gap:18px;margin-top:28px}
+ #about-page .about-pitch{width:64%;max-width:250px;padding:0}
+ #about-page .about-method-steps article{grid-template-columns:28px 1fr;gap:13px;padding-block:23px}
+ #about-page .about-step-number{font-size:18px}
+ #about-page .about-method-steps h3{font-size:21px;margin-bottom:8px}
+ #about-page .about-method-steps p{font-size:15px}
+ #about-page .about-direction{padding-bottom:58px}
+ #about-page .about-direction-panel{display:block;padding:32px 25px 26px;border-radius:20px}
+ #about-page .about-direction h2{font-size:32px}
+ #about-page .about-direction-copy{display:block;margin-top:27px}
+ #about-page .about-direction h3{font-size:19px;margin-bottom:8px}
+ #about-page .about-direction-copy p{font-size:15px}
+ #about-page .about-direction article+article{margin-top:23px}
+ #about-page .about-values{display:block;margin-top:28px;padding-top:21px}
+ #about-page .about-values>p{font-size:11px}
+ #about-page .about-values ul{flex-wrap:wrap;gap:9px 20px;font-size:12px;margin-top:12px}
+ #about-page .about-programs{display:block;padding-bottom:58px}
+ #about-page .about-programs header>p:not(.about-eyebrow){font-size:15px;margin:19px 0 10px}
+ #about-page .about-program-table{margin-top:25px}
+ #about-page .about-program-table caption{font-size:11px;padding-bottom:10px}
+ #about-page .about-program-table th{font-size:11px}
+ #about-page .about-program-table td{font-size:16px;padding-block:16px}
+ #about-page .about-program-table td:last-child{font-size:13px}
+ #about-page .about-team{padding-block:54px}
+ #about-page .about-team-grid{display:flex;flex-direction:column;gap:28px}
+ #about-page .about-team-copy{width:100%}
+ #about-page .about-team-person{margin-top:24px;padding-top:20px}
+ #about-page .about-team-person h3{font-size:21px}
+ #about-page .about-team-person p{font-size:11px}
+ #about-page .about-team .about-reading{font-size:15px;margin-top:18px}
+ #about-page .about-team-photo{width:100%;height:400px;max-width:420px;border-radius:18px}
+ #about-page .about-join{display:block;padding-block:58px 46px}
+ #about-page .about-join h2{font-size:clamp(27px,7.4vw,36px)}
+ #about-page .about-join-heading>p:not(.about-eyebrow){font-size:15px;margin:19px 0 10px}
+ #about-page .about-faq{margin-top:28px}
+ #about-page .about-faq summary{font-size:15px;min-height:70px;padding-block:17px;gap:14px}
+ #about-page .about-faq details>p{font-size:14px;padding-inline-end:12px}
+}
+@media(width<360px){
+ #about-page .about-shell{width:calc(100% - 32px)}
+ #about-page h1{font-size:28px}
+ #about-page .about-facts{gap:7px}
+ #about-page .about-facts>div{padding-inline:7px}
+ #about-page .about-facts dd{font-size:12px}
+ #about-page .about-direction-panel{padding-inline:22px}
+ #about-page .about-direction h2{font-size:29px}
+ #about-page .about-team-photo{height:360px}
+}
+@media(prefers-reduced-motion:reduce){#about-page *,#about-page *:before,#about-page *:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}#about-page [data-about-motion].about-waiting{opacity:1;transform:none}}
+@media print{#about-page [data-about-motion].about-waiting{opacity:1;transform:none}}
+
+/* Printing must expose complete lines and marks immediately, including beforeprint. */
+@media print{#about-page *,#about-page *:before,#about-page *:after{transition:none!important;animation:none!important}}

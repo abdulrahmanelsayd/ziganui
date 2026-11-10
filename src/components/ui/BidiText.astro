@@ -1,0 +1,6 @@
+---
+interface Props { text: string; }
+const { text } = Astro.props;
+const parts = text.split(/(\d+(?:[–:+.\-]\d+)*)/g);
+---
+{parts.map((part) => /^\d/.test(part) ? <bdi dir="ltr">{part}</bdi> : part)}

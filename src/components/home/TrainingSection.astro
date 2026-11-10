@@ -1,0 +1,38 @@
+---
+import { home } from '../../data/home';
+import Underline from '../../assets/hero/truus-team-underline.svg';
+import Divider from '../../assets/programs/handdrawn-divider.svg';
+import Bullet from '../../assets/programs/diamond-bullet.svg';
+import '../../styles/programs.css';
+
+interface Props { id?: string; showProgramsLink?: boolean; }
+const { id = `training-${crypto.randomUUID()}`, showProgramsLink = true } = Astro.props;
+const content = home.training;
+const messages: Record<string, readonly [string, string]> = content.messages;
+const [headingLead, ...headingRest] = content.title.split(' ');
+---
+<section class="programs-direct" id={id} aria-labelledby={`${id}-title`} data-programs-direct>
+  <header class="direct-heading">
+    <h2 id={`${id}-title`}>{headingLead}{' '}<span>{headingRest.join(' ')}<Underline class="direct-title-mark" aria-hidden="true" focusable="false" /></span></h2>
+    <p class="direct-intro">{content.description}</p>
+  </header>
+  <ul class="direct-grid" role="list" aria-label="برامج زيغان التدريبية الخمسة">
+    {content.programs.map((program, index) => (
+      <li class={`direct-item direct-item--${index}`} data-program={program.id}>
+        <article class="direct-card" aria-labelledby={`${id}-${program.id}-title`}>
+          <img class="direct-sticker" src={`/images/programs/sticker-${index}.svg`} width="86" height="86" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <h3 id={`${id}-${program.id}-title`}>{program.name.split(' ').map((word, wordIndex, words) => <>{wordIndex > 0 && ' '}<span>{word}{wordIndex === words.length - 1 && '.'}</span></>)}</h3>
+          <Divider class="direct-divider" aria-hidden="true" focusable="false" />
+          <ul class="direct-details" role="list">
+            <li class="direct-age"><Bullet class="direct-bullet" aria-hidden="true" focusable="false" /><span>{program.ageCaption}</span></li>
+            {messages[program.id]!.map(message => <li class="direct-message"><Bullet class="direct-bullet" aria-hidden="true" focusable="false" /><span>{message}</span></li>)}
+          </ul>
+        </article>
+      </li>
+    ))}
+  </ul>
+  <div class="direct-actions">
+    <a class="direct-enquiry" href={content.href} target="_blank" rel="noopener noreferrer" data-training-enquiry>{content.cta}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6v12h12" /></svg></a>
+    {showProgramsLink && <a class="direct-more" href="/programs/">{content.programsLink}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6v12h12" /></svg></a>}
+  </div>
+</section>

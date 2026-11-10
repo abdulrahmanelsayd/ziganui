@@ -1,0 +1,61 @@
+---
+import { getImage } from 'astro:assets';
+import { publishedPlayers } from '../../data/players';
+import { previewPlayerShowcase, type PlayerShowcasePhoto } from '../../data/player-showcase';
+import { home } from '../../data/home';
+import { previewMode } from '../../data/site';
+import underline from '../../assets/hero/truus-team-underline.svg?raw';
+import '../../styles/players-showcase.css';
+import '../../styles/players-initial-layout.css';
+import SectionPageLink from '../ui/SectionPageLink.astro';
+interface Props { mode?: 'featured' | 'all'; id?: string; showPageLink?: boolean; }
+const { mode = 'featured', id = 'players', showPageLink = false } = Astro.props;
+const copy = home.players;
+const number = (value: number) => value.toLocaleString('ar-JO', { useGrouping: false });
+// Mode selects consent-approved records; its value is never a public roster claim.
+const selected = mode === 'featured' ? publishedPlayers.slice(0, 6) : publishedPlayers;
+const images: readonly PlayerShowcasePhoto[] = previewMode ? previewPlayerShowcase : await Promise.all(selected.map(async (player, i) => {
+  const source = player.photo.src;
+  const candidates = await Promise.all([80, 480, 800, 1080].map(width => getImage({ src: source, width: Math.min(width, source.width), format: 'webp' })));
+  return { assetId: player.id, width: source.width, height: source.height,
+    src: candidates[1]!.src, srcSet: candidates.slice(1).map(image => `${image.src} ${image.attributes.width}w`).join(', '), thumbnail: candidates[0]!.src,
+    alt: `صورة ${number(i + 1)} من معرض أبطال زيغان`, stickerIndex: i % 5 };
+}));
+const titleMark = underline.replace('<svg ', '<svg class="players-title-mark" aria-hidden="true" focusable="false" ');
+---
+{images.length > 0 && <section class="players-truus" id={id} aria-labelledby={`${id}-title`}>
+  <div class="players-content">
+    <header class="players-heading"><h2 id={`${id}-title`}><span>{copy.lead}</span>{' '}<strong>{copy.focus}<Fragment set:html={titleMark} /></strong></h2></header>
+    <div class="players-fan" data-players-fan data-instruction-id={`${id}-instruction`}>
+      <div class="players-stage" role="region" aria-roledescription="معرض صور" aria-label={copy.regionLabel}>
+        <ul class="players-deck" aria-label={copy.listLabel}>
+          {images.map((image, i) => <li class="player-shot" data-player-index={i}><figure>
+            <img class="player-portrait" src={image.src} srcset={image.srcSet} sizes="(max-width:767px) 82vw, (max-width:1099px) 43vw, 540px" width={image.width} height={image.height} alt={image.alt} loading="lazy" decoding="async" draggable="false" />
+            <img class="player-sticker" src={`/images/programs/sticker-${image.stickerIndex}.svg`} width="100" height="100" alt="" aria-hidden="true" draggable="false" />
+          </figure></li>)}
+        </ul>
+      </div>
+      <div class="players-controls" hidden>
+        <div class="players-thumbs" role="group" aria-label="اختر صورة">
+          {images.map((image, i) => <button class="player-thumb" type="button" data-player-select={i} aria-label={`عرض الصورة ${number(i + 1)} من ${number(images.length)} صور`} aria-pressed={i === 0 ? 'true' : 'false'}><img src={image.thumbnail} width="60" height="80" alt="" loading="lazy" decoding="async" draggable="false" /></button>)}
+        </div>
+        <div class="players-navigation">
+          <button class="players-arrow" type="button" data-player-previous aria-label={copy.previous}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></button>
+          <p class="players-counter" aria-live="polite" aria-atomic="true"><span>الصورة</span>{' '}<bdi data-player-count>{number(1)} / {number(images.length)}</bdi></p>
+          <button class="players-arrow" type="button" data-player-next aria-label={copy.next}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6-6-6 6 6 6" /></svg></button>
+        </div>
+        <p class="players-instruction" id={`${id}-instruction`}>{copy.instruction}</p>
+      </div>
+    </div>
+    {showPageLink && <SectionPageLink href="/gallery/" label="شاهد معرض الصور" surface="dark" />}
+  </div>
+  <script src="../../scripts/players-showcase.ts"></script>
+</section>}
+
+{previewMode && images.length === 0 && <section id={id} class="section" aria-labelledby={`${id}-title`}>
+  <div class="container section-heading">
+    <h2 id={`${id}-title`}>الصور والأنشطة</h2>
+    <p>صور اللاعبين غير مرفقة في نسخة السورس العامة.</p>
+    {showPageLink && <SectionPageLink href="/gallery/" label="شاهد معرض الصور" />}
+  </div>
+</section>}

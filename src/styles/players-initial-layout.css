@@ -1,0 +1,43 @@
+/* Reserve the existing fan geometry before enhancement, using actual DOM counts.
+   The original stylesheet/controller take over as soon as data-enhanced is set. */
+@media (scripting: enabled) {
+  .players-fan:not([data-enhanced]):has(.players-deck > .player-shot) .players-stage {
+    height: calc(var(--player-card-width) * 3/2 + 30px);
+  }
+  .players-fan:not([data-enhanced]):has(.players-deck > .player-shot) .players-deck {
+    display: block;
+    height: 100%;
+    position: relative;
+    direction: ltr;
+  }
+  .players-fan:not([data-enhanced]) .player-shot {
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    width: var(--player-card-width);
+    transform: translateX(-50%);
+  }
+  .players-fan:not([data-enhanced]) .player-shot:not(:first-child) {
+    visibility: hidden;
+  }
+  .players-fan:not([data-enhanced]) .players-controls[hidden]:has(.player-thumb:nth-child(2)) {
+    display: grid !important;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .players-fan:not([data-enhanced]) .players-controls[hidden]:has(.player-thumb:nth-child(8)) {
+    width: 100%;
+  }
+  .players-fan:not([data-enhanced]) .players-thumbs:has(> .player-thumb:nth-child(8)) {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}
+@media (scripting: enabled) and (width < 768px) {
+  .players-fan:not([data-enhanced]):has(.players-deck > .player-shot) .players-stage {
+    height: calc(var(--player-card-width) * 3/2 + 24px);
+  }
+  .players-fan:not([data-enhanced]) .players-controls[hidden]:has(.player-thumb:nth-child(2)) {
+    display: flex !important;
+  }
+}

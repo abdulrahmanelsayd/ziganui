@@ -1,0 +1,74 @@
+---
+import { site, enquiryUrl } from '../../data/site';
+import underlineSvg from '../../assets/hero/truus-team-underline.svg?raw';
+import pitchSvg from '../../assets/about/training-pitch.svg?raw';
+import '../../styles/about.css';
+
+// Only trusted, local SVG artwork is inserted as raw markup.
+const titleMark = underlineSvg.trim().replace('<svg ', '<svg class="about-title-mark" aria-hidden="true" focusable="false" ');
+---
+<script>
+  import { initAboutPage } from '../../scripts/about-page';
+  initAboutPage();
+</script>
+<div id="about-page">
+  <section class="about-hero" aria-labelledby="about-title">
+    <svg class="about-edge-definitions" width="0" height="0" aria-hidden="true" focusable="false"><defs><clipPath id="about-title-edge" clipPathUnits="objectBoundingBox"><path d="M0 0H1V.78Q.945 1 .8 1H.2Q.055 1 0 .78Z"/></clipPath></defs></svg>
+    <h1 id="about-title">عن الأكاديمية</h1>
+  </section>
+
+  <section class="about-introduction about-shell" id="academy" aria-labelledby="about-academy-title">
+    <div class="about-intro-grid">
+      <header class="about-intro-copy" data-about-motion>
+        <p class="about-eyebrow">أكاديمية زيغان لكرة القدم</p>
+        <h2 id="about-academy-title"><span class="about-heading-line">تعلّم كرة القدم.</span><span class="about-heading-line">وافهم <span class="about-mark">تفاصيلها.<Fragment set:html={titleMark} /></span></span></h2>
+      </header>
+      <div class="about-intro-body" data-about-motion data-about-delay="80">
+        <div class="about-reading"><p>في زيغان، نجمع بين التدريب في الملعب والحصص النظرية، لتطوير مهارات اللاعب وفهمه للّعبة. نستقبل البنات والشباب من ٦ إلى ١٨ عامًا، ضمن مجموعات تراعي العمر والمستوى.</p><p>مقرّنا في الزرقاء، وتُقام تدريباتنا في ملاعب مدينة الزرقاء الرياضية.</p></div>
+        <a class="about-text-link" href="#approach">تعرّف على منهج التدريب <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+      </div>
+    </div>
+    <dl class="about-facts" data-about-motion><div><dt>الفئة العمرية</dt><dd>٦–١٨ عامًا</dd></div><div><dt>التسجيل متاح</dt><dd>للبنات والشباب</dd></div><div><dt>تقسيم المجموعات</dt><dd>حسب العمر والمستوى</dd></div></dl>
+  </section>
+
+  <section class="about-method" id="approach" aria-labelledby="about-method-title"><div class="about-shell">
+    <header class="about-section-heading" data-about-motion><p class="about-eyebrow">منهج التدريب</p><h2 id="about-method-title"><span class="about-heading-line">المهارة في الملعب.</span><span class="about-heading-line">والفهم وراء <span class="about-mark">كل قرار.<Fragment set:html={titleMark} /></span></span></h2><p>تشرح الحصص النظرية أفكار اللعب، ويمنح التدريب العملي اللاعب فرصة تطبيقها. نربط بين أداء المهارة واختيار الوقت والمكان المناسبين لاستخدامها.</p></header>
+    <div class="about-method-board">
+      <div class="about-method-steps">
+        <article data-about-motion><span class="about-step-number" aria-hidden="true">٠١</span><div><h3>إتقان الأساسيات</h3><p>التحكّم بالكرة والتمرير والاستلام؛ مع الاهتمام بطريقة الأداء والتكرار الهادف.</p></div></article>
+        <article data-about-motion data-about-delay="60"><span class="about-step-number" aria-hidden="true">٠٢</span><div><h3>قراءة اللعب</h3><p>فهم المساحات، وملاحظة حركة الزملاء، وتحديد التوقيت المناسب للتمريرة والتحرّك.</p></div></article>
+        <article data-about-motion data-about-delay="120"><span class="about-step-number" aria-hidden="true">٠٣</span><div><h3>التطبيق مع الفريق</h3><p>استخدام ما تعلّمه اللاعب في مواقف اللعب، والتعرّف على دوره في بناء الهجمة ومساندة زملائه.</p></div></article>
+      </div>
+      <div class="about-pitch" data-about-motion role="img" aria-label="رسم توضيحي للتمرير والتحرّك في ملعب كرة القدم"><Fragment set:html={pitchSvg} /></div>
+    </div>
+  </div></section>
+
+  <section class="about-direction about-shell" aria-labelledby="about-direction-title"><div class="about-direction-panel">
+    <header class="about-section-heading" data-about-motion><p class="about-eyebrow">رؤيتنا ورسالتنا</p><h2 id="about-direction-title"><span class="about-heading-line">تطوّر يتجاوز</span><span class="about-heading-line">أداء <span class="about-mark">المهارة.<Fragment set:html={titleMark} /></span></span></h2></header>
+    <div class="about-direction-copy"><article data-about-motion><h3>رؤيتنا</h3><p>أن يتعلّم اللاعب كرة القدم بفهم، ويكتسب من ممارستها الالتزام والقدرة على التعاون واحترام الآخرين.</p></article><article data-about-motion data-about-delay="80"><h3>رسالتنا</h3><p>تقديم تدريب منظّم يجمع المعرفة والتطبيق، ويراعي مرحلة اللاعب، ويمنحه أساسًا واضحًا لتطوير أدائه.</p></article></div>
+    <div class="about-values" data-about-motion><p>قيمنا داخل الملعب</p><ul><li>الالتزام بالتمرين</li><li>احترام الجميع</li><li>العمل بروح الفريق</li></ul></div>
+  </div></section>
+
+  <section class="about-programs about-shell" id="programs" aria-labelledby="about-programs-title">
+    <header class="about-section-heading" data-about-motion><p class="about-eyebrow">الفئات والبرامج</p><h2 id="about-programs-title"><span class="about-heading-line">لكل مرحلة،</span><span class="about-heading-line">تدريب <span class="about-mark">يناسبها.<Fragment set:html={titleMark} /></span></span></h2><p>برامج للبراعم والناشئين والشباب، إلى جانب حراسة المرمى واللياقة البدنية. العمر نقطة البداية، والمستوى جزء أساسي من اختيار المجموعة.</p><a class="about-text-link" href="/programs/">اكتشف البرامج <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></a></header>
+    <div class="about-program-table" data-about-motion data-about-delay="80"><table><caption>البرامج والفئات العمرية</caption><thead><tr><th scope="col">البرنامج</th><th scope="col">الفئة العمرية</th></tr></thead><tbody>{site.training.programs.map(program => <tr><td>{program.name}</td><td>{program.ageCaption}</td></tr>)}</tbody></table></div>
+  </section>
+
+  <section class="about-team" id="coach" aria-labelledby="about-team-title"><div class="about-shell">
+    <header class="about-section-heading" data-about-motion><p class="about-eyebrow">فريق التدريب</p><h2 id="about-team-title"><span class="about-heading-line">التوجيه جزء</span><span class="about-heading-line">من <span class="about-mark">كل تمرين.<Fragment set:html={titleMark} /></span></span></h2></header>
+    <div class="about-team-grid"><div class="about-team-copy" data-about-motion><div class="about-team-person"><h3>الكابتن محمد القيسي</h3><p>مؤسس الأكاديمية وقائد فريق التدريب</p></div><div class="about-reading"><p>يقود الكابتن محمد القيسي فريق التدريب في زيغان. يعمل الفريق على شرح التمارين وتوجيه اللاعبين أثناء التطبيق، مع مراعاة الفروق بين الأعمار والمستويات.</p><p>نؤمن بأن دور المدرب يشمل توضيح الهدف من التمرين، وتشجيع اللاعب على المحاولة، وترسيخ التعاون والانضباط داخل المجموعة.</p></div></div>
+    <figure class="about-team-photo" data-about-motion data-about-delay="80"><img src="/images/coach/manager-1280.webp" srcset="/images/coach/manager-900.webp 681w, /images/coach/manager-1280.webp 968w" sizes="(max-width:767px) calc(100vw - 40px), 43vw" width="968" height="1280" alt="الكابتن محمد القيسي" loading="lazy" decoding="async"></figure>
+  </div></div></section>
+
+  <section class="about-join about-shell" id="join" aria-labelledby="about-join-title">
+    <header class="about-join-heading about-section-heading" data-about-motion><p class="about-eyebrow">الانضمام إلى زيغان</p><h2 id="about-join-title"><span class="about-heading-line">قبل التمرينة <span class="about-mark">الأولى.<Fragment set:html={titleMark} /></span></span></h2><p>تواصل معنا لتحديد المجموعة والمواعيد المناسبة. التمرينة التجريبية مجانية، وتمنحك فرصة التعرّف على التدريب في الأكاديمية.</p><a class="about-text-link" href={enquiryUrl} target="_blank" rel="noopener noreferrer">استفسر عن الانضمام <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></a></header>
+    <div class="about-faq" data-about-motion data-about-delay="80">
+      <details><summary>كيف أختار المجموعة المناسبة؟<span aria-hidden="true"></span></summary><p>نراعي عمر اللاعب ومستواه عند اختيار المجموعة. شاركنا عمره وخبرته السابقة بكرة القدم عند التواصل، لنتعرّف معًا على الخيارات المناسبة.</p></details>
+      <details><summary>ما مواعيد التدريب وقيمة الاشتراك؟<span aria-hidden="true"></span></summary><p>الاشتراك شهري، وتُعرف قيمته والمواعيد المتاحة بالتواصل المباشر مع الأكاديمية. لا ننشر جدولًا ثابتًا لأن المواعيد متغيّرة.</p></details>
+      <details><summary>هل يشمل الاشتراك الزي الرياضي؟<span aria-hidden="true"></span></summary><p>الزي الرياضي خارج قيمة الاشتراك. يُرجى التواصل مع الأكاديمية لمعرفة تفاصيله.</p></details>
+      <details><summary>هل تتوفر المواصلات؟<span aria-hidden="true"></span></summary><p>تتوفر خيارات للمواصلات بحسب المنطقة. تواصل معنا لمعرفة إمكانية الخدمة وتفاصيلها.</p></details>
+      <details><summary>أين تُقام التدريبات؟<span aria-hidden="true"></span></summary><p>تُقام التدريبات في ملاعب مدينة الزرقاء الرياضية. ويمكن زيارة مقر الأكاديمية في الزرقاء للاستفسار والتواصل.</p><a class="about-text-link" href="/contact/">المقر وطرق التواصل <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></a></details>
+    </div>
+  </section>
+</div>
+

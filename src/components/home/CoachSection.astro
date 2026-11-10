@@ -1,0 +1,46 @@
+---
+import { home } from '../../data/home';
+import { photos } from '../../data/photos';
+import { trialUrl } from '../../data/site';
+import underline from '../../assets/hero/truus-team-underline.svg?raw';
+import '../../styles/coach.css';
+import SectionPageLink from '../ui/SectionPageLink.astro';
+
+interface Props { id?: string; showPageLink?: boolean; }
+const { id = 'coach', showPageLink = false } = Astro.props;
+const copy = home.coach;
+const portrait = photos.coach;
+const posterMark = underline.replace('<svg ', '<svg class="coach-poster-mark" aria-hidden="true" focusable="false" ');
+---
+<section class="coach-constellation" id={id} aria-labelledby={`${id}-team-title`} data-coach-constellation>
+  <div class="coach-board">
+    <article class="coach-poster" aria-label={`${portrait.alt}، ${copy.role}`}>
+      <div class="coach-poster-type">
+        <p class="coach-byline">{copy.eyebrow}<Fragment set:html={posterMark} /></p>
+        <h3 id={`${id}-name`} aria-label={`${copy.firstName} ${copy.lastName}`}><span>{copy.firstName}</span>{' '}<strong>{copy.lastName}</strong></h3>
+        <p class="coach-poster-role">{copy.role}</p>
+      </div>
+      <div class="coach-portrait-stage">
+        <img class="coach-halo" src="/images/coach/tick-halo.svg" width="500" height="500" alt="" aria-hidden="true" />
+        <picture class="coach-poster-photo">
+          <source media="(max-width:767px)" srcset={portrait.mobileSrcSet} sizes="120vw" />
+          <img src={portrait.desktopSrc} width="968" height="1280" alt={portrait.alt} loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </article>
+    <div class="coach-orbit">
+      <header class="coach-orbit-heading"><p>{copy.circleLead}</p><h2 id={`${id}-team-title`}><span>{copy.title[0]}</span><strong>{copy.title[1]}</strong></h2></header>
+      <article class="coach-team-paper">
+        <img class="coach-team-sticker" src="/images/programs/sticker-0.svg" width="82" height="82" alt="" aria-hidden="true" />
+        <h3>{copy.cardTitle.map(line => <span>{line}</span>)}</h3>
+        <span class="coach-paper-divider" aria-hidden="true"></span>
+        <p>{copy.paragraph}</p>
+      </article>
+      <div class="coach-orbit-action">
+        <a href={trialUrl} target="_blank" rel="noopener noreferrer" data-trial>{copy.cta}<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6v12h12" /></svg></a>
+        <span>{copy.note}</span>
+      </div>
+    </div>
+  </div>
+  {showPageLink && <SectionPageLink href="/about/#coach" label="عن الأكاديمية وفريق التدريب" />}
+</section>

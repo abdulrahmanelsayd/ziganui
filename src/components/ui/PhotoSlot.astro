@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import type { PhotoAsset } from '../../data/photos';
+interface Props {
+  label: string;
+  ratio: '4:3' | '4:5' | '3:2' | '16:9';
+  photo?: PhotoAsset | null;
+  eager?: boolean;
+  rounded?: boolean;
+  sizes?: string;
+  class?: string;
+}
+const { label, ratio, photo = null, eager = false, rounded = true, sizes = '(max-width: 767px) calc(100vw - 40px), 540px', class: className } = Astro.props;
+const dimensions = { '4:3': [1080, 810], '4:5': [840, 1050], '3:2': [1080, 720], '16:9': [1152, 648] } as const;
+const [width, height] = dimensions[ratio];
+---
+<div class:list={['photo-slot', { rounded, placeholder: !photo }, className]} style={`--ratio: ${width} / ${height}; --focal: ${photo?.focalPoint ?? '50% 50%'};`}>
+  {photo ? <Image src={photo.src} alt={photo.alt} width={width} height={height} widths={[320, 480, 640, 840, 1080]} sizes={sizes} format="webp" quality={80} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} /> : <span class="slot-label">{label}</span>}
+</div>
+<style>
+  .photo-slot { aspect-ratio: var(--ratio); width: 100%; position: relative; overflow: hidden; }
+  .rounded { border-radius: 20px; }
+  .placeholder { background: var(--color-surface); border: 1px solid var(--color-border); display: grid; place-items: center; }
+  .slot-label { color: var(--color-muted); font-size: 14px; line-height: 1.6; text-align: center; padding: 16px; }
+  img { width: 100%; height: 100%; object-fit: cover; object-position: var(--focal); transition: transform 280ms var(--ease-out); }
+  :global(a:hover) img { transform: scale(1.02); }
+</style>

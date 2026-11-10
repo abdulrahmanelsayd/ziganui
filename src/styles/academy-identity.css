@@ -1,0 +1,15 @@
+/* Academy typography applied by role. Original backgrounds, header, hero and
+   accepted Academy composition/motion keep their current treatment. */
+body[data-type-system="academy"]{--identity-ink:#181818;--identity-orange:#d84b00;--identity-display:clamp(32px,4.6vw,72px)}
+body[data-type-system="academy"] .page-heading h1,
+body[data-type-system="academy"] .section-heading>h2,
+body[data-type-system="academy"] .coach-copy>h2,
+body[data-type-system="academy"] .trial-content>h2{
+ font-family:Swissra,Arial,sans-serif;font-weight:700;font-style:normal;font-synthesis:none;font-size:var(--identity-display);line-height:1.4;letter-spacing:0;text-wrap:balance;color:var(--identity-ink)
+}
+body[data-type-system="academy"] .page-heading h1{font-size:clamp(36px,5.2vw,80px)}
+body[data-type-system="academy"] .intro-statement>h2{font-family:Swissra,Arial,sans-serif;font-size:clamp(28px,3.2vw,48px);font-weight:700;line-height:1.5;letter-spacing:0;font-synthesis:none;text-wrap:balance}
+body[data-type-system="academy"] .coach-name{font-family:Swissra,Arial,sans-serif;font-size:clamp(24px,2.2vw,32px);font-weight:700;line-height:1.4;letter-spacing:0}
+body[data-type-system="academy"] .section-heading>p{font-family:Swissra,Arial,sans-serif;font-weight:400;font-size:18px;line-height:1.85;letter-spacing:0}
+@media(width < 768px){body[data-type-system="academy"]{--identity-display:32px}body[data-type-system="academy"] .page-heading h1{font-size:36px}body[data-type-system="academy"] .section-heading>p{font-size:14px;line-height:1.9}}
+@media(width < 360px){body[data-type-system="academy"]{--identity-display:28px}body[data-type-system="academy"] .page-heading h1{font-size:32px}}
